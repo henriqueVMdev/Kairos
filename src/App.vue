@@ -1,15 +1,15 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import ArrowIcon from './components/ArrowIcon.vue'
-import CountUp from './components/CountUp.vue'
 import KairosMark from './components/KairosMark.vue'
+import ProductPrototype from './components/ProductPrototype.vue'
+import TrueFocus from './components/TrueFocus.vue'
 import WebThreads from './components/WebThreads.vue'
 
 const app = ref(null)
 const menuToggle = ref(null)
 const mobileMenu = ref(null)
 const menuOpen = ref(false)
-const marqueePaused = ref(false)
 const scrolled = ref(false)
 const progress = ref(0)
 const scenario = ref(18)
@@ -273,27 +273,18 @@ onBeforeUnmount(() => {
       </section>
 
       <div class="marquee" aria-label="Fluxo do Kairos">
-        <div class="marquee__track" :class="{ 'is-paused': marqueePaused }">
-          <span>CAPTURAR</span><i />
-          <span>PROCESSAR</span><i />
-          <span>MODELAR</span><i />
-          <span>PREVER</span><i />
-          <span>DECIDIR</span><i />
-          <span aria-hidden="true">CAPTURAR</span><i aria-hidden="true" />
-          <span aria-hidden="true">PROCESSAR</span><i aria-hidden="true" />
-          <span aria-hidden="true">MODELAR</span><i aria-hidden="true" />
-          <span aria-hidden="true">PREVER</span><i aria-hidden="true" />
-          <span aria-hidden="true">DECIDIR</span><i aria-hidden="true" />
+        <div class="marquee__track">
+          <TrueFocus
+            sentence="CAPTURAR|PROCESSAR|MODELAR|PREVER|DECIDIR"
+            separator="|"
+            :manual-mode="true"
+            :blur-amount="3.5"
+            border-color="#ffffff"
+            glow-color="rgba(255, 255, 255, 0.6)"
+            :animation-duration="0.6"
+            :pause-between-animations="1"
+          />
         </div>
-        <button
-          class="marquee__control"
-          type="button"
-          :aria-pressed="marqueePaused"
-          @click="marqueePaused = !marqueePaused"
-        >
-          <span class="sr-only">{{ marqueePaused ? 'Retomar animação' : 'Pausar animação' }}</span>
-          <b aria-hidden="true">{{ marqueePaused ? '▶' : 'Ⅱ' }}</b>
-        </button>
       </div>
 
       <section id="visao" class="manifesto section-light">
@@ -363,97 +354,7 @@ onBeforeUnmount(() => {
             </p>
           </div>
 
-          <div class="product-frame" data-reveal>
-            <div class="product-frame__bar">
-              <div class="product-frame__brand"><KairosMark compact /> <span>KAIROS / SIGNAL ROOM</span></div>
-              <div class="product-frame__mode"><span class="status-dot" /> PROTÓTIPO INTERATIVO</div>
-              <div class="product-frame__time">CONCEITO / V0.1</div>
-            </div>
-
-            <div class="product-frame__body">
-              <aside class="product-sidebar">
-                <span class="product-sidebar__label">ESPAÇO DE TRABALHO</span>
-                <div class="product-nav-item is-active"><i>⌁</i> Visão geral</div>
-                <div class="product-nav-item"><i>◌</i> Fontes</div>
-                <div class="product-nav-item"><i>⌇</i> Modelos</div>
-                <div class="product-nav-item"><i>↗</i> Cenários</div>
-                <div class="product-sidebar__foot">
-                  <span>PIPELINE</span>
-                  <strong><i class="status-dot" /> FLUXO CONCEITUAL</strong>
-                </div>
-              </aside>
-
-              <div class="product-main">
-                <header class="product-main__header">
-                  <div>
-                    <span>VISÃO GERAL / AGOSTO</span>
-                    <h3>Sinais que pedem atenção.</h3>
-                  </div>
-                  <div class="product-filter">ÚLTIMOS 30 DIAS <span>⌄</span></div>
-                </header>
-
-                <div class="signal-grid">
-                  <article class="signal-chart">
-                    <div class="signal-chart__header">
-                      <div>
-                        <span>SINAL PRIORITÁRIO</span>
-                        <strong>Demanda emergente</strong>
-                      </div>
-                      <span class="signal-badge">ALTA RELEVÂNCIA</span>
-                    </div>
-                    <div class="signal-chart__metric">
-                      <strong>+18,4%</strong>
-                      <span>vs. período anterior</span>
-                    </div>
-                    <div class="chart-visual" role="img" aria-label="Gráfico ilustrativo mostrando uma tendência crescente de 18,4 por cento no período">
-                      <div class="chart-visual__grid" />
-                      <svg viewBox="0 0 760 210" preserveAspectRatio="none" aria-hidden="true">
-                        <defs>
-                          <linearGradient id="area-fill" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="white" stop-opacity=".16" />
-                            <stop offset="100%" stop-color="white" stop-opacity="0" />
-                          </linearGradient>
-                        </defs>
-                        <path class="chart-area" d="M0 176 C54 172 72 151 119 155S178 184 224 153 276 110 323 121 385 144 435 111 489 94 535 100 587 62 632 75 698 35 760 25 V210 H0Z" />
-                        <path class="chart-line" d="M0 176 C54 172 72 151 119 155S178 184 224 153 276 110 323 121 385 144 435 111 489 94 535 100 587 62 632 75 698 35 760 25" />
-                      </svg>
-                      <span class="chart-marker"><i />18,4%</span>
-                      <div class="chart-axis"><span>01 AGO</span><span>08 AGO</span><span>15 AGO</span><span>22 AGO</span><span>HOJE</span></div>
-                    </div>
-                  </article>
-
-                  <article class="signal-list">
-                    <header>
-                      <span>SINAIS DETECTADOS</span>
-                      <b>03</b>
-                    </header>
-                    <div class="signal-list__item">
-                      <span class="signal-list__index">01</span>
-                      <div><strong>Concentração regional</strong><span>Sudeste · aceleração</span></div>
-                      <em>+24%</em>
-                    </div>
-                    <div class="signal-list__item">
-                      <span class="signal-list__index">02</span>
-                      <div><strong>Mudança de comportamento</strong><span>Cluster B · recorrência</span></div>
-                      <em>+11%</em>
-                    </div>
-                    <div class="signal-list__item">
-                      <span class="signal-list__index">03</span>
-                      <div><strong>Risco de capacidade</strong><span>Janela de 14 dias</span></div>
-                      <em>MED</em>
-                    </div>
-                    <footer><span>SIMULAÇÃO / KRS-04</span><span>ADERÊNCIA 94,8%</span></footer>
-                  </article>
-                </div>
-
-                <div class="product-metrics">
-                  <article><span>VOLUME ANALISADO*</span><strong><CountUp :value="2.4" :decimals="1" suffix=" TB" /></strong><small>AMBIENTE DEMONSTRATIVO</small></article>
-                  <article><span>FONTES CONECTADAS*</span><strong><CountUp :value="12" /></strong><small>ESTRUTURADAS + NÃO ESTRUT.</small></article>
-                  <article><span>PADRÕES ENCONTRADOS*</span><strong><CountUp :value="284" /></strong><small>NO CICLO SIMULADO</small></article>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ProductPrototype data-reveal />
           <p class="demo-disclaimer" data-reveal>* Dados ilustrativos para demonstrar a experiência conceitual do produto.</p>
         </div>
       </section>
