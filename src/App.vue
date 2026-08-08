@@ -2,8 +2,8 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import ArrowIcon from './components/ArrowIcon.vue'
 import CountUp from './components/CountUp.vue'
-import DataField from './components/DataField.vue'
 import KairosMark from './components/KairosMark.vue'
+import WebThreads from './components/WebThreads.vue'
 
 const app = ref(null)
 const menuToggle = ref(null)
@@ -203,6 +203,31 @@ onBeforeUnmount(() => {
       <section id="inicio" class="hero section-dark">
         <div class="hero__grid grid-lines" />
         <div class="hero__glow" />
+        <div class="hero__threads" aria-hidden="true">
+          <WebThreads
+            color1="#ffffff"
+            color2="#000000"
+            color3="#FFFFFF"
+            :speed="0.15"
+            :thread-count="6"
+            :frequency="5.0"
+            :spread="0.11"
+            :taper="1.0"
+            :position="0.5"
+            fan-mode="left"
+            :glow="0.02"
+            :falloff="0.61"
+            :thickness="1.1"
+            :brightness="0.6"
+            :opacity="1.0"
+            :mirror="false"
+            :shimmer="false"
+            :grain="false"
+            :grain-intensity="0.06"
+            :mouse-interaction="true"
+            :mouse-strength="0.12"
+          />
+        </div>
         <div class="container hero__inner">
           <div class="hero__copy">
             <div class="eyebrow hero__eyebrow hero-intro">
@@ -232,10 +257,6 @@ onBeforeUnmount(() => {
                 </a>
               </div>
             </div>
-          </div>
-
-          <div class="hero__visual hero-intro">
-            <DataField />
           </div>
 
           <div class="hero__meta hero-intro">
