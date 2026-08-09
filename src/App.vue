@@ -1,6 +1,7 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import ArrowIcon from './components/ArrowIcon.vue'
+import GridScan from './components/GridScan.vue'
 import KairosMark from './components/KairosMark.vue'
 import ProductPrototype from './components/ProductPrototype.vue'
 import TrueFocus from './components/TrueFocus.vue'
@@ -158,7 +159,6 @@ onBeforeUnmount(() => {
         <nav class="desktop-nav" aria-label="Navegação principal">
           <a href="#visao">Visão</a>
           <a href="#capacidades">Capacidades</a>
-          <a href="#tecnologia">Tecnologia</a>
         </nav>
 
         <a class="header-cta" href="#plataforma">
@@ -190,8 +190,7 @@ onBeforeUnmount(() => {
       >
         <a href="#visao" @click="closeMenu()"><span>01</span>Visão</a>
         <a href="#capacidades" @click="closeMenu()"><span>02</span>Capacidades</a>
-        <a href="#tecnologia" @click="closeMenu()"><span>03</span>Tecnologia</a>
-        <a href="#contato" @click="closeMenu()"><span>04</span>Contato</a>
+        <a href="#contato" @click="closeMenu()"><span>03</span>Contato</a>
         <div class="mobile-menu__footer">
           <span>KAIROS / DECISION INTELLIGENCE</span>
           <span>PROJETO ACADÊMICO — {{ currentYear }}</span>
@@ -251,8 +250,8 @@ onBeforeUnmount(() => {
                   <span>Explorar o Kairos</span>
                   <ArrowIcon />
                 </a>
-                <a class="text-link" href="#processo">
-                  Ver como funciona
+                <a class="text-link" href="#capacidades">
+                  Ver capacidades
                   <span aria-hidden="true">↓</span>
                 </a>
               </div>
@@ -359,55 +358,10 @@ onBeforeUnmount(() => {
         </div>
       </section>
 
-      <section id="processo" class="process section-light">
-        <div class="container">
-          <div class="section-index" data-reveal>
-            <span>03</span>
-            <span>DO VOLUME À DECISÃO</span>
-          </div>
-          <div class="process__intro" data-reveal>
-            <h2>Um fluxo contínuo.<br /><em>Quatro movimentos.</em></h2>
-            <p>Da entrada fragmentada à recomendação contextualizada, cada etapa reduz o ruído.</p>
-          </div>
-
-          <div class="process-flow">
-            <div class="process-flow__line" aria-hidden="true"><i /></div>
-            <article data-reveal>
-              <div class="process-flow__number">01</div>
-              <div class="process-icon process-icon--connect" aria-hidden="true"><i /><i /><i /><i /><b /></div>
-              <span>ENTRADA</span>
-              <h3>Conecte</h3>
-              <p>Centralize dados de diferentes fontes em um único fluxo de análise.</p>
-            </article>
-            <article data-reveal>
-              <div class="process-flow__number">02</div>
-              <div class="process-icon process-icon--process" aria-hidden="true"><i v-for="n in 9" :key="n" /></div>
-              <span>ESTRUTURA</span>
-              <h3>Processe</h3>
-              <p>Trate grandes volumes com consistência, velocidade e governança.</p>
-            </article>
-            <article data-reveal>
-              <div class="process-flow__number">03</div>
-              <div class="process-icon process-icon--discover" aria-hidden="true"><i /><i /><i /><b /></div>
-              <span>INTELIGÊNCIA</span>
-              <h3>Descubra</h3>
-              <p>Identifique padrões, tendências e relações difíceis de perceber.</p>
-            </article>
-            <article data-reveal>
-              <div class="process-flow__number">04</div>
-              <div class="process-icon process-icon--decide" aria-hidden="true"><i /><b /></div>
-              <span>AÇÃO</span>
-              <h3>Decida</h3>
-              <p>Transforme contexto em um próximo movimento claro e justificável.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section id="capacidades" class="capabilities section-dark">
         <div class="container">
           <div class="section-index section-index--light" data-reveal>
-            <span>04</span>
+            <span>03</span>
             <span>CAPACIDADES</span>
           </div>
           <div class="capabilities__header" data-reveal>
@@ -468,7 +422,7 @@ onBeforeUnmount(() => {
         <div class="container scenario__layout">
           <div class="scenario__copy" data-reveal>
             <div class="section-index">
-              <span>05</span>
+              <span>04</span>
               <span>CENÁRIO INTERATIVO</span>
             </div>
             <h2>E se a demanda<br />mudar <em>amanhã?</em></h2>
@@ -509,47 +463,29 @@ onBeforeUnmount(() => {
         </div>
       </section>
 
-      <section id="tecnologia" class="technology section-dark">
-        <div class="technology__beam" aria-hidden="true" />
-        <div class="container">
-          <div class="section-index section-index--light" data-reveal>
-            <span>06</span>
-            <span>ARQUITETURA</span>
-          </div>
-          <div class="technology__heading" data-reveal>
-            <h2>Engenharia preparada<br />para <em>pensar em escala.</em></h2>
-            <p>Três camadas trabalhando como um único sistema de inteligência.</p>
-          </div>
-
-          <div class="stack-flow" data-reveal>
-            <article>
-              <div class="stack-flow__meta"><span>01</span><i>INTERFACE</i></div>
-              <strong>VUE</strong>
-              <p>Experiências fluidas para explorar e compreender informação complexa.</p>
-              <div class="stack-flow__signal"><i /><i /><i /><i /></div>
-            </article>
-            <div class="stack-flow__connector" aria-hidden="true"><i>→</i></div>
-            <article>
-              <div class="stack-flow__meta"><span>02</span><i>CORE</i></div>
-              <strong>JAVA</strong>
-              <p>Serviços desenhados para robustez, segurança e governança operacional.</p>
-              <div class="stack-flow__signal"><i /><i /><i /><i /></div>
-            </article>
-            <div class="stack-flow__connector" aria-hidden="true"><i>→</i></div>
-            <article>
-              <div class="stack-flow__meta"><span>03</span><i>INTELLIGENCE</i></div>
-              <strong>PYTHON</strong>
-              <p>Modelos analíticos e ciência de dados para encontrar o sinal no ruído.</p>
-              <div class="stack-flow__signal"><i /><i /><i /><i /></div>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section id="contato" class="final-cta section-dark">
-        <div class="final-cta__field" aria-hidden="true">
-          <span v-for="n in 80" :key="n" :style="{ '--i': n }" />
-        </div>
+        <GridScan
+          class="final-cta__gridscan"
+          :sensitivity="0.6"
+          :line-thickness="1.35"
+          lines-color="#e4e4e4"
+          :grid-scale="0.085"
+          scan-color="#afafaf"
+          :scan-opacity="0.72"
+          :line-jitter="0.025"
+          :bloom-intensity="0.58"
+          :bloom-threshold="0.06"
+          :bloom-smoothing="0.7"
+          :chromatic-aberration="0.0008"
+          :noise-intensity="0.008"
+          :scan-glow="0.54"
+          :scan-softness="2.3"
+          :scan-phase-taper="0.22"
+          scan-direction="forward"
+          :scan-duration="7"
+          :scan-delay="10.5"
+          aria-hidden="true"
+        />
         <div class="container final-cta__inner">
           <div class="eyebrow" data-reveal><span class="status-dot" /> O MOMENTO CERTO COMEÇA AQUI</div>
           <h2 data-reveal>O próximo movimento<br />pode estar nos <em>seus dados.</em></h2>
@@ -569,7 +505,6 @@ onBeforeUnmount(() => {
         <nav aria-label="Navegação do rodapé">
           <a href="#visao">Visão</a>
           <a href="#capacidades">Capacidades</a>
-          <a href="#tecnologia">Tecnologia</a>
         </nav>
       </div>
       <div class="container site-footer__bottom">
