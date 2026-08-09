@@ -3,6 +3,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import ArrowIcon from './components/ArrowIcon.vue'
 import GridScan from './components/GridScan.vue'
 import KairosMark from './components/KairosMark.vue'
+import PixelCard from './components/PixelCard.vue'
 import ProductPrototype from './components/ProductPrototype.vue'
 import TrueFocus from './components/TrueFocus.vue'
 import WebThreads from './components/WebThreads.vue'
@@ -317,10 +318,7 @@ onBeforeUnmount(() => {
           <div class="bento-grid">
             <article class="capability-card capability-card--large" data-reveal>
               <div class="capability-card__top"><span>01</span><span>ESCALA</span></div>
-              <div class="matrix-visual" aria-hidden="true">
-                <span v-for="n in 96" :key="n" :style="{ '--i': n }" />
-                <i class="matrix-visual__scan" />
-              </div>
+              <PixelCard class="pixel-card-visual" active />
               <div class="capability-card__content">
                 <h3>Processamento em massa</h3>
                 <p>Uma base pensada para transformar conjuntos extensos de dados com consistência e rastreabilidade.</p>
