@@ -5,6 +5,7 @@ import GridScan from './components/GridScan.vue'
 import KairosMark from './components/KairosMark.vue'
 import PixelCard from './components/PixelCard.vue'
 import ProductPrototype from './components/ProductPrototype.vue'
+import ReactiveGrid from './components/ReactiveGrid.vue'
 import TrueFocus from './components/TrueFocus.vue'
 import WebThreads from './components/WebThreads.vue'
 
@@ -336,10 +337,7 @@ onBeforeUnmount(() => {
 
             <article class="capability-card" data-reveal>
               <div class="capability-card__top"><span>03</span><span>PADRÕES</span></div>
-              <div class="anomaly-visual" aria-hidden="true">
-                <span v-for="n in 28" :key="n" :style="{ '--i': n }" />
-                <b />
-              </div>
+              <ReactiveGrid class="reactive-grid-visual" />
               <div class="capability-card__content">
                 <h3>Detecção de anomalias</h3>
                 <p>Sinais fora da curva ganham contexto antes de se tornarem problemas.</p>

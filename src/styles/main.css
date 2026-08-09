@@ -1641,33 +1641,10 @@ svg {
 
 @keyframes ring-rotate { to { transform: rotate(360deg); } }
 
-.anomaly-visual {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
+.reactive-grid-visual {
   flex: 1;
-  gap: 1rem;
   min-height: 13rem;
-  padding: 2.5rem 1rem;
-  place-items: center;
-}
-
-.anomaly-visual span {
-  width: 0.28rem;
-  height: 0.28rem;
-  border-radius: 50%;
-  background: #555;
-}
-
-.anomaly-visual b {
-  position: absolute;
-  top: 26%;
-  right: 25%;
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 50%;
-  background: var(--white);
-  box-shadow: 0 0 0 0.7rem rgba(255, 255, 255, 0.08), 0 0 2rem rgba(255, 255, 255, 0.5);
+  margin: 1.5rem 0;
 }
 
 .decision-visual {

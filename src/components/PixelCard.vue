@@ -19,9 +19,9 @@ const canvas = ref(null)
 const scanning = ref(false)
 
 const SCAN_DURATION_MS = 7500
-const SHIMMER_HOLD_MS = 6000
-const PIXEL_FADE_MS = 260
-const NEXT_SCAN_DELAY_MS = 6500
+const SHIMMER_DELAY_MS = 5500
+const SHIMMER_SETTLE_MS = 700
+const NEXT_SCAN_DELAY_MS = 3000
 
 let pixels = []
 let animationFrame = 0
@@ -34,6 +34,7 @@ let reducedMotionQuery
 let isVisible = false
 let width = 0
 let height = 0
+let scanSequence = 0
 
 const easeOut = cubicBezier(0, 0, 0.58, 1)
 
@@ -59,6 +60,9 @@ class Pixel {
     this.growStart = null
     this.shrinkStart = null
     this.shrinkFrom = 0
+    this.cycleStartSize = 0
+    this.activatedAt = null
+    this.scanSequence = -1
   }
 
   draw() {
@@ -109,48 +113,45 @@ class Pixel {
     this.draw()
   }
 
-  shimmer() {
+  shimmer(intensity = 1) {
     if (this.size >= this.maxSize) this.isReverse = true
     else if (this.size <= this.minSize) this.isReverse = false
-    this.size += this.isReverse ? -this.speed : this.speed
+    this.size += (this.isReverse ? -this.speed : this.speed) * intensity
   }
 
-  cycle(elapsed, growDuration, holdDuration, fadeDuration) {
-    const localTime = elapsed - this.delay
+  updateScan(now, scanStartedAt, activeScanSequence) {
+    const passTime = scanStartedAt + this.delay
     this.isIdle = false
 
-    if (localTime < 0) return
-
-    if (localTime < growDuration) {
-      const progress = growDuration > 0 ? localTime / growDuration : 1
-      this.size = easeOut(progress) * this.maxSize
-      this.draw()
-      return
+    if (this.scanSequence !== activeScanSequence && now >= passTime) {
+      this.scanSequence = activeScanSequence
+      this.activatedAt = passTime
+      this.isReverse = false
     }
 
-    if (localTime < growDuration + holdDuration) {
+    const activeTime = this.activatedAt === null ? -1 : now - this.activatedAt
+
+    if (activeTime >= 0 && activeTime < SHIMMER_DELAY_MS) {
       this.shimmer()
       this.draw()
       return
     }
 
-    if (localTime < growDuration + holdDuration + fadeDuration) {
-      if (this.shrinkStart === null) {
-        this.shrinkStart = elapsed
-        this.shrinkFrom = this.size
-      }
-      const progress = Math.min(1, (elapsed - this.shrinkStart) / fadeDuration)
-      this.size = this.shrinkFrom * (1 - easeOut(progress))
+    if (activeTime >= SHIMMER_DELAY_MS && activeTime < SHIMMER_DELAY_MS + SHIMMER_SETTLE_MS) {
+      const progress = (activeTime - SHIMMER_DELAY_MS) / SHIMMER_SETTLE_MS
+      this.shimmer(1 - easeOut(progress))
+      this.size += (this.maxSize - this.size) * 0.12
       this.draw()
       return
     }
 
-    this.size = 0
-    this.isIdle = true
+    this.size = this.maxSize
+    this.isReverse = false
+    this.draw()
   }
 
   reset() {
-    this.size = 0
+    this.size = this.maxSize
     this.counter = 0
     this.isIdle = false
     this.isReverse = false
@@ -158,6 +159,9 @@ class Pixel {
     this.growStart = null
     this.shrinkStart = null
     this.shrinkFrom = 0
+    this.cycleStartSize = 0
+    this.activatedAt = null
+    this.scanSequence = -1
   }
 }
 
@@ -311,12 +315,11 @@ function startScanCycle() {
   clearTimeout(scanTimer)
   clearTimeout(loopTimer)
   animationFrame = 0
-  resetPixels()
   scanning.value = true
 
   const cycleStart = performance.now()
-  const growDuration = Math.max(0, props.duration) * 1000
-  const cycleDuration = SCAN_DURATION_MS + growDuration + SHIMMER_HOLD_MS + PIXEL_FADE_MS
+  scanSequence += 1
+  const activeScanSequence = scanSequence
   let previousTime = cycleStart
 
   scanTimer = window.setTimeout(() => {
@@ -332,17 +335,9 @@ function startScanCycle() {
     previousTime = now
     clearCanvas()
 
-    let allIdle = true
-    const elapsed = now - cycleStart
     pixels.forEach((pixel) => {
-      pixel.cycle(elapsed, growDuration, SHIMMER_HOLD_MS, PIXEL_FADE_MS)
-      if (!pixel.isIdle) allIdle = false
+      pixel.updateScan(now, cycleStart, activeScanSequence)
     })
-
-    if (elapsed >= cycleDuration && allIdle) {
-      cancelAnimationFrame(animationFrame)
-      animationFrame = 0
-    }
   }
 
   animationFrame = requestAnimationFrame(frame)
