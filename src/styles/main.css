@@ -189,7 +189,7 @@ svg {
 
 .site-header__inner {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr auto;
   align-items: center;
   width: min(100%, var(--container));
   height: 5.25rem;
@@ -199,42 +199,6 @@ svg {
 
 .site-header__brand {
   justify-self: start;
-}
-
-.desktop-nav {
-  display: flex;
-  align-items: center;
-  gap: 2.4rem;
-}
-
-.desktop-nav a {
-  position: relative;
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 0.76rem;
-  letter-spacing: 0.05em;
-  transition: color 0.25s ease;
-}
-
-.desktop-nav a::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: -0.45rem;
-  left: 0;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.35s var(--ease-out);
-}
-
-.desktop-nav a:hover {
-  color: var(--white);
-}
-
-.desktop-nav a:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
 }
 
 .header-cta {
@@ -2081,7 +2045,6 @@ svg {
 
   .app-shell::before { display: none; }
   .site-header__inner { grid-template-columns: 1fr auto; height: 4.6rem; }
-  .desktop-nav,
   .header-cta { display: none; }
   .menu-toggle { display: block; justify-self: end; }
   .mobile-menu { display: flex; }
