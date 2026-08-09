@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-09T19:00:00-03:00",
+  "title": "Design System: Kairos",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#050505", "tonalRamp": ["#050505", "#171717", "#2a2a2a", "#454545", "#666666", "#929292", "#c7c7c7", "#f4f2ed"] },
+      "white": { "role": "primary", "displayName": "Signal White", "canonical": "#f4f2ed", "tonalRamp": ["#181817", "#343330", "#53514d", "#74716b", "#99958e", "#bbb7af", "#dad7d0", "#f4f2ed"] },
+      "muted": { "role": "neutral", "displayName": "Muted", "canonical": "#9a9995", "tonalRamp": ["#242321", "#3b3a38", "#555451", "#72716d", "#92918c", "#b3b1ac", "#d4d2cc", "#f1efe9"] },
+      "signal-blush": { "role": "secondary", "displayName": "Signal Blush", "canonical": "#fec8c8", "tonalRamp": ["#2b1717", "#4d2929", "#704040", "#945d5d", "#b97f7f", "#d9a3a3", "#efc8c8", "#fff1f1"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Títulos de alto impacto e hierarquia editorial." },
+      "headline": { "displayName": "Headline", "purpose": "Títulos de superfícies operacionais." },
+      "title": { "displayName": "Title", "purpose": "Mensagens de apoio e títulos internos." },
+      "body": { "displayName": "Body", "purpose": "Conteúdo funcional e explicativo." },
+      "body-sm": { "displayName": "Compact Body", "purpose": "Explicações curtas em superfícies operacionais." },
+      "label": { "displayName": "Control Label", "purpose": "Rótulos de campos e ações." },
+      "label-xs": { "displayName": "Data Label", "purpose": "Dados, estados e metainformação." },
+      "micro": { "displayName": "Micro Label", "purpose": "Metadados periféricos não essenciais." }
+    },
+    "shadows": [
+      { "name": "frame-depth", "value": "0 2rem 8rem rgba(0, 0, 0, 0.55)", "purpose": "Separar apenas grandes demonstrações de produto do fundo." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Entradas e transições de estado confiantes." },
+      { "name": "ease-smooth", "value": "cubic-bezier(0.65, 0, 0.35, 1)", "purpose": "Movimentos contínuos e controlados." }
+    ],
+    "breakpoints": [
+      { "name": "compact", "value": "640px" },
+      { "name": "mobile", "value": "900px" },
+      { "name": "wide", "value": "1180px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "CTA claro sobre superfícies escuras.",
+      "html": "<button class=\"ds-button-primary\">EXPLORAR <span aria-hidden=\"true\">→</span></button>",
+      "css": ".ds-button-primary { display:inline-flex;align-items:center;justify-content:space-between;gap:24px;min-width:200px;height:57px;padding:0 14px 0 22px;border:1px solid #f4f2ed;border-radius:100px;background:#f4f2ed;color:#050505;font:600 12px Manrope,Arial,sans-serif;letter-spacing:.02em;transition:background .3s,color .3s;cursor:pointer}.ds-button-primary:hover{background:#050505;color:#f4f2ed}.ds-button-primary:focus-visible{outline:2px solid #f4f2ed;outline-offset:4px}"
+    },
+    {
+      "name": "Header CTA",
+      "kind": "button",
+      "description": "Ação compacta contornada no cabeçalho.",
+      "html": "<a class=\"ds-header-cta\" href=\"#\">VER A EXPERIÊNCIA <span aria-hidden=\"true\">→</span></a>",
+      "css": ".ds-header-cta{display:inline-flex;align-items:center;gap:11px;min-height:43px;padding:0 15px 0 18px;border:1px solid rgba(255,255,255,.32);border-radius:100px;color:#f4f2ed;font:500 11px Manrope,Arial,sans-serif;letter-spacing:.04em;text-decoration:none;transition:background .3s,color .3s,border-color .3s}.ds-header-cta:hover{border-color:#f4f2ed;background:#f4f2ed;color:#050505}.ds-header-cta:focus-visible{outline:2px solid #f4f2ed;outline-offset:4px}"
+    },
+    {
+      "name": "Dark Frame",
+      "kind": "card",
+      "refersTo": "frame-dark",
+      "description": "Container de demonstrações e experiências principais.",
+      "html": "<section class=\"ds-dark-frame\"><span>DEMONSTRAÇÃO</span><strong>Sinal identificado</strong></section>",
+      "css": ".ds-dark-frame{display:grid;gap:16px;padding:32px;border:1px solid rgba(255,255,255,.22);border-radius:11px;background:#0b0b0b;color:#f4f2ed}.ds-dark-frame span{color:#9a9995;font:400 9px 'DM Mono',monospace;letter-spacing:.1em}.ds-dark-frame strong{font:500 28px Manrope,Arial,sans-serif}"
+    },
+    {
+      "name": "Data Label",
+      "kind": "custom",
+      "description": "Rótulo técnico usado em índices, estados e metadados.",
+      "html": "<span class=\"ds-data-label\">SINAL / 03</span>",
+      "css": ".ds-data-label{color:#9a9995;font:400 10px 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}"
+    },
+    {
+      "name": "Status Signal",
+      "kind": "custom",
+      "description": "Indicador compacto de estado ativo.",
+      "html": "<span class=\"ds-status\"><i aria-hidden=\"true\"></i> SISTEMA ATIVO</span>",
+      "css": ".ds-status{display:inline-flex;align-items:center;gap:7px;color:#9a9995;font:400 9px 'DM Mono',monospace;letter-spacing:.08em}.ds-status i{width:7px;height:7px;border-radius:50%;background:#f4f2ed}.ds-status:focus-visible{outline:2px solid #f4f2ed;outline-offset:4px}"
+    },
+    {
+      "name": "Dark Input",
+      "kind": "input",
+      "refersTo": "input-dark",
+      "description": "Campo funcional sobre superfícies escuras, com foco e erro explícitos.",
+      "html": "<label class=\"ds-input-label\" for=\"ds-email\">E-mail</label><input class=\"ds-input-dark\" id=\"ds-email\" type=\"email\" placeholder=\"voce@empresa.com\">",
+      "css": ".ds-input-label{display:block;margin-bottom:9px;color:#f4f2ed;font:600 11px Manrope,Arial,sans-serif}.ds-input-dark{width:100%;height:54px;padding:0 16px;border:1px solid rgba(255,255,255,.12);border-radius:5px;outline:1px solid transparent;outline-offset:2px;background:rgba(255,255,255,.055);color:#f4f2ed;font:400 13px Manrope,Arial,sans-serif}.ds-input-dark::placeholder{color:#9a9995}.ds-input-dark:hover{border-color:rgba(255,255,255,.24)}.ds-input-dark:focus-visible{border-color:rgba(244,242,237,.68);outline-color:rgba(244,242,237,.26)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Instrumento de Decisão",
+    "overview": "Superfícies escuras, linhas finas e contraste controlado organizam informação complexa como um instrumento preciso. A expressão vem de dados em movimento e relações espaciais, não de ornamento gratuito.",
+    "keyCharacteristics": ["Alto contraste", "Estrutura modular", "Movimento informativo", "Três vozes tipográficas com papéis definidos"],
+    "rules": [
+      { "name": "Signal Rarity", "body": "Cor de sinal aparece apenas quando comunica um estado ou dado específico.", "section": "colors" },
+      { "name": "Flat by Default", "body": "Borda, contraste e estado criam hierarquia antes de qualquer sombra.", "section": "elevation" }
+    ],
+    "dos": ["Preservar alto contraste e linhas finas.", "Usar movimento para comunicar sinal ou mudança de estado."],
+    "donts": ["Não usar cor de destaque sem significado.", "Não esconder função essencial atrás de animação."]
+  }
+}

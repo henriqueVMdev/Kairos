@@ -158,8 +158,8 @@ onBeforeUnmount(() => {
           <KairosMark />
         </a>
 
-        <a class="header-cta" href="#plataforma">
-          <span>Ver a experiência</span>
+        <a class="header-cta" href="/login">
+          <span>Entrar</span>
           <ArrowIcon />
         </a>
 
@@ -185,7 +185,8 @@ onBeforeUnmount(() => {
         :aria-hidden="!menuOpen"
         :inert="!menuOpen"
       >
-        <a href="#contato" @click="closeMenu()"><span>01</span>Contato</a>
+        <a href="/login" @click="closeMenu()"><span>01</span>Entrar</a>
+        <a href="#contato" @click="closeMenu()"><span>02</span>Contato</a>
         <div class="mobile-menu__footer">
           <span>KAIROS / DECISION INTELLIGENCE</span>
           <span>PROJETO ACADÊMICO — {{ currentYear }}</span>
