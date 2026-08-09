@@ -157,7 +157,6 @@ onBeforeUnmount(() => {
         </a>
 
         <nav class="desktop-nav" aria-label="Navegação principal">
-          <a href="#visao">Visão</a>
           <a href="#capacidades">Capacidades</a>
         </nav>
 
@@ -188,9 +187,8 @@ onBeforeUnmount(() => {
         :aria-hidden="!menuOpen"
         :inert="!menuOpen"
       >
-        <a href="#visao" @click="closeMenu()"><span>01</span>Visão</a>
-        <a href="#capacidades" @click="closeMenu()"><span>02</span>Capacidades</a>
-        <a href="#contato" @click="closeMenu()"><span>03</span>Contato</a>
+        <a href="#capacidades" @click="closeMenu()"><span>01</span>Capacidades</a>
+        <a href="#contato" @click="closeMenu()"><span>02</span>Contato</a>
         <div class="mobile-menu__footer">
           <span>KAIROS / DECISION INTELLIGENCE</span>
           <span>PROJETO ACADÊMICO — {{ currentYear }}</span>
@@ -264,7 +262,7 @@ onBeforeUnmount(() => {
             <span>DECISION SUPPORT</span>
           </div>
 
-          <a class="scroll-cue" href="#visao" aria-label="Rolar para a próxima seção">
+          <a class="scroll-cue" href="#plataforma" aria-label="Rolar para a próxima seção">
             <span>SCROLL</span>
             <i />
           </a>
@@ -286,62 +284,10 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
-      <section id="visao" class="manifesto section-light">
-        <div class="container">
-          <div class="section-index" data-reveal>
-            <span>01</span>
-            <span>POR QUE KAIROS</span>
-          </div>
-
-          <div class="manifesto__layout">
-            <h2 class="display-title" data-reveal>
-              Dados, por si só,<br />não são vantagem.
-              <em>O timing é.</em>
-            </h2>
-            <div class="manifesto__body" data-reveal>
-              <p>
-                Empresas acumulam informação mais rápido do que conseguem interpretá-la.
-                O Kairos encontra, dentro desse volume, os sinais que realmente merecem atenção.
-              </p>
-              <p class="manifesto__note">
-                Menos ruído entre o que aconteceu, o que os dados indicam e o que deve ser feito a seguir.
-              </p>
-            </div>
-          </div>
-
-          <div class="principles">
-            <article data-reveal>
-              <span>01 / ESCALA</span>
-              <h3>Todo o volume.<br />Uma direção.</h3>
-              <div class="principle-visual principle-visual--points" aria-hidden="true">
-                <i v-for="n in 36" :key="n" :style="{ '--i': n }" />
-              </div>
-            </article>
-            <article data-reveal>
-              <span>02 / CONTEXTO</span>
-              <h3>Padrões que fazem<br />sentido.</h3>
-              <div class="principle-visual principle-visual--wave" aria-hidden="true">
-                <svg viewBox="0 0 400 100" preserveAspectRatio="none">
-                  <path d="M0 60 C45 60 50 18 94 18S145 84 192 84s57-61 103-61 52 38 105 38" />
-                  <path d="M0 72 C58 72 48 38 104 38s53 30 102 30 59-47 103-47 39 26 91 26" />
-                </svg>
-              </div>
-            </article>
-            <article data-reveal>
-              <span>03 / AÇÃO</span>
-              <h3>Clareza para o<br />próximo movimento.</h3>
-              <div class="principle-visual principle-visual--target" aria-hidden="true">
-                <i /><i /><i /><b />
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section id="plataforma" class="platform section-dark">
         <div class="container">
           <div class="section-index section-index--light" data-reveal>
-            <span>02</span>
+            <span>01</span>
             <span>INTELIGÊNCIA EM MOVIMENTO</span>
           </div>
 
@@ -361,7 +307,7 @@ onBeforeUnmount(() => {
       <section id="capacidades" class="capabilities section-dark">
         <div class="container">
           <div class="section-index section-index--light" data-reveal>
-            <span>03</span>
+            <span>02</span>
             <span>CAPACIDADES</span>
           </div>
           <div class="capabilities__header" data-reveal>
@@ -418,11 +364,11 @@ onBeforeUnmount(() => {
         </div>
       </section>
 
-      <section class="scenario section-light">
+      <section class="scenario section-dark">
         <div class="container scenario__layout">
           <div class="scenario__copy" data-reveal>
-            <div class="section-index">
-              <span>04</span>
+            <div class="section-index section-index--light">
+              <span>03</span>
               <span>CENÁRIO INTERATIVO</span>
             </div>
             <h2>E se a demanda<br />mudar <em>amanhã?</em></h2>
@@ -439,7 +385,7 @@ onBeforeUnmount(() => {
 
           <div id="cenario" class="scenario-panel" data-reveal>
             <header>
-              <div><span class="status-dot status-dot--dark" /> SIMULAÇÃO CONCEITUAL / DADOS ILUSTRATIVOS</div>
+              <div><span class="status-dot" /> SIMULAÇÃO CONCEITUAL / DADOS ILUSTRATIVOS</div>
               <span>KRS / SCN-001</span>
             </header>
             <div class="scenario-panel__chart">
@@ -503,7 +449,6 @@ onBeforeUnmount(() => {
         <KairosMark />
         <p>Inteligência para o momento de decidir.</p>
         <nav aria-label="Navegação do rodapé">
-          <a href="#visao">Visão</a>
           <a href="#capacidades">Capacidades</a>
         </nav>
       </div>
