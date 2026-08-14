@@ -411,60 +411,23 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="root" class="pixel-card" aria-hidden="true">
-    <canvas ref="canvas" />
+  <div
+    ref="root"
+    class="relative isolate h-full min-h-20 w-full min-w-20 overflow-hidden bg-black"
+    aria-hidden="true"
+  >
+    <canvas ref="canvas" class="block h-full w-full" />
     <span
       v-if="scanning"
-      class="pixel-card__scan"
+      class="pixel-card__scan pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(to_right,transparent_84%,rgba(255,255,255,0.025)_96%,rgba(255,255,255,0.12)_100%)] after:absolute after:inset-y-0 after:right-0 after:w-px after:bg-[rgba(255,255,255,0.95)] after:content-[''] after:shadow-[0.35rem_0_1.15rem_rgba(255,255,255,0.48)]"
       :style="{ '--scan-duration': `${SCAN_DURATION_MS}ms` }"
     />
   </div>
 </template>
 
 <style scoped>
-.pixel-card,
-.pixel-card canvas {
-  width: 100%;
-  height: 100%;
-}
-
-.pixel-card {
-  position: relative;
-  min-width: 5rem;
-  min-height: 5rem;
-  overflow: hidden;
-  background: #000;
-  isolation: isolate;
-}
-
-.pixel-card canvas {
-  display: block;
-}
-
 .pixel-card__scan {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(
-    to right,
-    transparent 84%,
-    rgba(255, 255, 255, 0.025) 96%,
-    rgba(255, 255, 255, 0.12) 100%
-  );
-  transform: translateX(-100%);
   animation: pixel-card-scan var(--scan-duration) linear both;
-}
-
-.pixel-card__scan::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 1px;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0.35rem 0 1.15rem rgba(255, 255, 255, 0.48);
 }
 
 @keyframes pixel-card-scan {

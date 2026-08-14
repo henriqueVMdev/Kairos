@@ -1,16 +1,53 @@
 <template>
-  <div ref="wrap" class="data-field" aria-hidden="true">
-    <canvas ref="canvas" />
-    <div class="data-field__core">
-      <span class="data-field__core-label">sinal</span>
-      <strong>94,8</strong>
-      <span>confiança</span>
+  <div
+    ref="wrap"
+    class="relative isolate aspect-square w-[min(47vw,42rem)] before:absolute before:inset-[13%] before:z-[-1] before:rounded-full before:border before:border-white/[0.08] before:content-[''] after:absolute after:inset-[21%] after:z-[-1] after:animate-spin after:rounded-full after:border after:border-dashed after:border-white/[0.08] after:[animation-direction:reverse] after:[animation-duration:34s] after:content-[''] after:motion-reduce:animate-none max-[900px]:w-[min(100%,35rem)]"
+    aria-hidden="true"
+  >
+    <canvas
+      ref="canvas"
+      class="absolute inset-0 size-full rounded-full [-webkit-mask-image:radial-gradient(circle,#000_44%,rgba(0,0,0,0.92)_60%,transparent_74%)] [mask-image:radial-gradient(circle,#000_44%,rgba(0,0,0,0.92)_60%,transparent_74%)]"
+    />
+    <div
+      class="absolute top-1/2 left-1/2 grid size-[7.8rem] -translate-x-1/2 -translate-y-1/2 place-content-center rounded-full border border-white/25 bg-[rgba(6,6,6,0.72)] text-center shadow-[0_0_3rem_rgba(255,255,255,0.08),inset_0_0_1.5rem_rgba(255,255,255,0.03)] backdrop-blur-[12px]"
+    >
+      <span
+        class="mb-[0.35rem] [font-family:var(--font-mono)] text-[0.55rem] tracking-[0.16em] text-[var(--white)] uppercase"
+      >
+        sinal
+      </span>
+      <strong
+        class="[font-family:var(--font-display)] text-[clamp(1.8rem,3vw,2.5rem)] leading-none font-normal"
+      >
+        94,8
+      </strong>
+      <span
+        class="[font-family:var(--font-mono)] text-[0.55rem] tracking-[0.16em] text-[var(--muted)] uppercase"
+      >
+        confiança
+      </span>
     </div>
-    <span class="data-field__tag data-field__tag--one">01 / ENTRADA</span>
-    <span class="data-field__tag data-field__tag--two">PADRÃO DETECTADO</span>
-    <span class="data-field__tag data-field__tag--three">Δ +18,4%</span>
-    <span class="data-field__orbit data-field__orbit--one" />
-    <span class="data-field__orbit data-field__orbit--two" />
+    <span
+      class="absolute top-[18%] left-[8%] border border-white/15 bg-[rgba(5,5,5,0.7)] px-[0.62rem] py-[0.45rem] [font-family:var(--font-mono)] text-[0.56rem] tracking-[0.1em] text-white/62 whitespace-nowrap backdrop-blur-[8px]"
+    >
+      01 / ENTRADA
+    </span>
+    <span
+      class="absolute top-[26%] right-[2%] border border-white/15 bg-[rgba(5,5,5,0.7)] px-[0.62rem] py-[0.45rem] [font-family:var(--font-mono)] text-[0.56rem] tracking-[0.1em] text-white/62 whitespace-nowrap backdrop-blur-[8px]"
+    >
+      PADRÃO DETECTADO
+    </span>
+    <span
+      class="absolute right-[14%] bottom-[19%] border border-white/15 bg-[rgba(5,5,5,0.7)] px-[0.62rem] py-[0.45rem] [font-family:var(--font-mono)] text-[0.56rem] tracking-[0.1em] text-[var(--white)] whitespace-nowrap backdrop-blur-[8px]"
+    >
+      Δ +18,4%
+    </span>
+    <span
+      class="absolute inset-[6%] z-[-1] animate-spin rounded-full border border-white/10 [animation-duration:18s] after:absolute after:top-1/2 after:left-[-2px] after:size-1 after:rounded-full after:bg-[var(--white)] after:shadow-[0_0_12px_var(--white)] after:content-[''] motion-reduce:animate-none"
+    />
+    <span
+      class="absolute inset-[29%] z-[-1] animate-spin rounded-full border border-white/10 [animation-direction:reverse] [animation-duration:11s] after:absolute after:top-1/2 after:left-[-2px] after:size-1 after:rounded-full after:bg-[var(--white)] after:shadow-[0_0_12px_var(--white)] after:content-[''] motion-reduce:animate-none"
+    />
   </div>
 </template>
 
@@ -163,153 +200,3 @@ onBeforeUnmount(() => {
   wrap.value?.removeEventListener('pointerleave', onPointerLeave)
 })
 </script>
-
-<style scoped>
-.data-field {
-  position: relative;
-  width: min(47vw, 42rem);
-  aspect-ratio: 1;
-  isolation: isolate;
-}
-
-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  -webkit-mask-image: radial-gradient(circle, #000 44%, rgba(0, 0, 0, 0.92) 60%, transparent 74%);
-  mask-image: radial-gradient(circle, #000 44%, rgba(0, 0, 0, 0.92) 60%, transparent 74%);
-}
-
-.data-field::before,
-.data-field::after {
-  content: '';
-  position: absolute;
-  inset: 13%;
-  z-index: -1;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 50%;
-}
-
-.data-field::after {
-  inset: 21%;
-  border-style: dashed;
-  animation: rotate-field 34s linear infinite reverse;
-}
-
-.data-field__core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: grid;
-  width: 7.8rem;
-  height: 7.8rem;
-  place-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 50%;
-  background: rgba(6, 6, 6, 0.72);
-  box-shadow: 0 0 3rem rgba(255, 255, 255, 0.08), inset 0 0 1.5rem rgba(255, 255, 255, 0.03);
-  text-align: center;
-  transform: translate(-50%, -50%);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-}
-
-.data-field__core strong {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  font-weight: 400;
-  line-height: 1;
-}
-
-.data-field__core span {
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.data-field__core .data-field__core-label {
-  margin-bottom: 0.35rem;
-  color: var(--white);
-}
-
-.data-field__tag {
-  position: absolute;
-  padding: 0.45rem 0.62rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(5, 5, 5, 0.7);
-  color: rgba(255, 255, 255, 0.62);
-  font-family: var(--font-mono);
-  font-size: 0.56rem;
-  letter-spacing: 0.1em;
-  white-space: nowrap;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-
-.data-field__tag--one {
-  top: 18%;
-  left: 8%;
-}
-
-.data-field__tag--two {
-  top: 26%;
-  right: 2%;
-}
-
-.data-field__tag--three {
-  right: 14%;
-  bottom: 19%;
-  color: var(--white);
-}
-
-.data-field__orbit {
-  position: absolute;
-  z-index: -1;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  animation: rotate-field 18s linear infinite;
-}
-
-.data-field__orbit::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -2px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--white);
-  box-shadow: 0 0 12px var(--white);
-}
-
-.data-field__orbit--one {
-  inset: 6%;
-}
-
-.data-field__orbit--two {
-  inset: 29%;
-  animation-duration: 11s;
-  animation-direction: reverse;
-}
-
-@keyframes rotate-field {
-  to { transform: rotate(360deg); }
-}
-
-@media (max-width: 900px) {
-  .data-field {
-    width: min(100%, 35rem);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .data-field::after,
-  .data-field__orbit {
-    animation: none;
-  }
-}
-</style>

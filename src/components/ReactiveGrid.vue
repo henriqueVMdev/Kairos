@@ -285,25 +285,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="root" class="reactive-grid" aria-hidden="true">
-    <canvas ref="canvas" />
+  <div ref="root" class="relative h-full w-full overflow-hidden bg-black" aria-hidden="true">
+    <canvas ref="canvas" class="absolute inset-0 block h-full w-full" />
   </div>
 </template>
-
-<style scoped>
-.reactive-grid {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: #000;
-}
-
-.reactive-grid canvas {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-</style>

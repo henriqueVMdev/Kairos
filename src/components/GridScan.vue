@@ -428,6 +428,7 @@ onMounted(() => {
   renderer.toneMapping = THREE.NoToneMapping
   renderer.autoClear = false
   renderer.setClearColor(0x000000, 0)
+  renderer.domElement.className = 'absolute inset-0 block h-full! w-full!'
   element.appendChild(renderer.domElement)
 
   material = new THREE.ShaderMaterial({
@@ -556,22 +557,5 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="container" class="gridscan" />
+  <div ref="container" class="absolute inset-0 overflow-hidden" />
 </template>
-
-<style scoped>
-.gridscan {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-.gridscan :deep(canvas) {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-</style>

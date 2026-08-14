@@ -357,14 +357,5 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="container" class="web-threads" />
+  <div ref="container" class="relative h-full w-full overflow-hidden" />
 </template>
-
-<style scoped>
-.web-threads {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-</style>

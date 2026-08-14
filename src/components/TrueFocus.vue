@@ -156,8 +156,7 @@ onBeforeUnmount(() => {
 <template>
   <div
     ref="container"
-    class="true-focus"
-    :class="{ 'true-focus--ready': ready }"
+    class="relative flex w-full items-center justify-evenly gap-[clamp(0.75rem,2vw,2rem)] outline-none select-none max-[640px]:justify-between max-[640px]:gap-2"
     :style="componentStyle"
     role="group"
     :aria-label="sentence.split(separator).join(' ')"
@@ -165,8 +164,7 @@ onBeforeUnmount(() => {
     <template v-for="(word, index) in words" :key="`${word}-${index}`">
       <span
         :ref="(element) => setWordRef(element, index)"
-        class="true-focus__word"
-        :class="{ 'true-focus__word--active': index === currentIndex }"
+        class="true-focus-word relative flex-none cursor-pointer text-[clamp(1.1rem,1.8vw,1.65rem)] leading-none font-medium tracking-[-0.03em] text-inherit whitespace-nowrap outline-none transition-[filter] [transition-timing-function:ease] focus-visible:[outline:1px_solid_rgba(255,255,255,0.45)] focus-visible:outline-offset-[0.65rem] max-[640px]:text-[clamp(0.62rem,2.6vw,0.82rem)] max-[640px]:tracking-[-0.02em]"
         :style="wordStyle(index)"
         tabindex="0"
         @mouseenter="activateWord(index)"
@@ -176,144 +174,39 @@ onBeforeUnmount(() => {
       >
         {{ word }}
       </span>
-      <i v-if="index < words.length - 1" class="true-focus__separator" aria-hidden="true" />
+      <i
+        v-if="index < words.length - 1"
+        class="size-[0.4rem] flex-none rounded-full border border-solid border-white/70 max-[640px]:hidden"
+        aria-hidden="true"
+      />
     </template>
 
-    <div ref="focusFrame" class="true-focus__frame" aria-hidden="true">
-      <span class="true-focus__corner true-focus__corner--top-left" />
-      <span class="true-focus__corner true-focus__corner--top-right" />
-      <span class="true-focus__corner true-focus__corner--bottom-left" />
-      <span class="true-focus__corner true-focus__corner--bottom-right" />
+    <div
+      ref="focusFrame"
+      class="pointer-events-none absolute top-0 left-0 box-border border-0 [will-change:width,height,transform] motion-reduce:hidden [@media(pointer:coarse)]:hidden"
+      :class="ready ? 'opacity-100' : 'opacity-0'"
+      aria-hidden="true"
+    >
+      <span
+        class="absolute top-[-10px] left-[-10px] size-4 rounded-[3px] border-[3px] border-r-0 border-b-0 border-solid [border-color:var(--border-color)] [filter:drop-shadow(0_0_4px_var(--glow-color))] max-[640px]:top-[-6px] max-[640px]:left-[-6px] max-[640px]:size-[0.7rem] max-[640px]:border-2 max-[640px]:border-r-0 max-[640px]:border-b-0"
+      />
+      <span
+        class="absolute top-[-10px] right-[-10px] size-4 rounded-[3px] border-[3px] border-b-0 border-l-0 border-solid [border-color:var(--border-color)] [filter:drop-shadow(0_0_4px_var(--glow-color))] max-[640px]:top-[-6px] max-[640px]:right-[-6px] max-[640px]:size-[0.7rem] max-[640px]:border-2 max-[640px]:border-b-0 max-[640px]:border-l-0"
+      />
+      <span
+        class="absolute bottom-[-10px] left-[-10px] size-4 rounded-[3px] border-[3px] border-t-0 border-r-0 border-solid [border-color:var(--border-color)] [filter:drop-shadow(0_0_4px_var(--glow-color))] max-[640px]:bottom-[-6px] max-[640px]:left-[-6px] max-[640px]:size-[0.7rem] max-[640px]:border-2 max-[640px]:border-t-0 max-[640px]:border-r-0"
+      />
+      <span
+        class="absolute right-[-10px] bottom-[-10px] size-4 rounded-[3px] border-[3px] border-t-0 border-l-0 border-solid [border-color:var(--border-color)] [filter:drop-shadow(0_0_4px_var(--glow-color))] max-[640px]:right-[-6px] max-[640px]:bottom-[-6px] max-[640px]:size-[0.7rem] max-[640px]:border-2 max-[640px]:border-t-0 max-[640px]:border-l-0"
+      />
     </div>
   </div>
 </template>
 
 <style scoped>
-.true-focus {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: clamp(0.75rem, 2vw, 2rem);
-  width: 100%;
-  outline: none;
-  user-select: none;
-}
-
-.true-focus__word {
-  position: relative;
-  flex: 0 0 auto;
-  color: inherit;
-  font-size: clamp(1.1rem, 1.8vw, 1.65rem);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  white-space: nowrap;
-  cursor: pointer;
-  outline: none;
-  transition-property: filter;
-  transition-timing-function: ease;
-}
-
-.true-focus__word:focus-visible {
-  outline: 1px solid rgba(255, 255, 255, 0.45);
-  outline-offset: 0.65rem;
-}
-
-.true-focus__separator {
-  flex: 0 0 auto;
-  width: 0.4rem;
-  height: 0.4rem;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 50%;
-}
-
-.true-focus__frame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  box-sizing: border-box;
-  border: 0;
-  opacity: 0;
-  pointer-events: none;
-  will-change: width, height, transform;
-}
-
-.true-focus--ready .true-focus__frame {
-  opacity: 1;
-}
-
-.true-focus__corner {
-  position: absolute;
-  width: 1rem;
-  height: 1rem;
-  border: 3px solid var(--border-color);
-  border-radius: 3px;
-  filter: drop-shadow(0 0 4px var(--glow-color));
-}
-
-.true-focus__corner--top-left {
-  top: -10px;
-  left: -10px;
-  border-right: 0;
-  border-bottom: 0;
-}
-
-.true-focus__corner--top-right {
-  top: -10px;
-  right: -10px;
-  border-bottom: 0;
-  border-left: 0;
-}
-
-.true-focus__corner--bottom-left {
-  bottom: -10px;
-  left: -10px;
-  border-top: 0;
-  border-right: 0;
-}
-
-.true-focus__corner--bottom-right {
-  right: -10px;
-  bottom: -10px;
-  border-top: 0;
-  border-left: 0;
-}
-
-@media (max-width: 640px) {
-  .true-focus {
-    justify-content: space-between;
-    gap: 0.5rem;
-  }
-
-  .true-focus__word {
-    font-size: clamp(0.62rem, 2.6vw, 0.82rem);
-    letter-spacing: -0.02em;
-  }
-
-  .true-focus__separator {
-    display: none;
-  }
-
-  .true-focus__corner {
-    width: 0.7rem;
-    height: 0.7rem;
-    border-width: 2px;
-  }
-
-  .true-focus__corner--top-left { top: -6px; left: -6px; }
-  .true-focus__corner--top-right { top: -6px; right: -6px; }
-  .true-focus__corner--bottom-left { bottom: -6px; left: -6px; }
-  .true-focus__corner--bottom-right { right: -6px; bottom: -6px; }
-}
-
 @media (pointer: coarse), (prefers-reduced-motion: reduce) {
-  .true-focus__word {
+  .true-focus-word {
     filter: none !important;
-  }
-
-  .true-focus__frame {
-    display: none;
   }
 }
 </style>
