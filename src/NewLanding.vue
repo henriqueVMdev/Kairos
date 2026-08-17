@@ -1,34 +1,68 @@
 <script setup>
-import KairosMark from './components/KairosMark.vue'
+import { onMounted, ref } from 'vue';
+import KairosMark from './components/KairosMark.vue';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+onMounted(() => {
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 500);
+  camera.position.set(0, 0, 5);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  const ambientLight = new THREE.AmbientLight(0xffffff, 10);
+  scene.add(ambientLight);
+
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+  directionalLight.position.set(5, 5, 1);
+  scene.add(directionalLight);
+
+  let diceModel = null;
+  let animationFrameId = null;
+
+  const loader = new GLTFLoader();
+  loader.load(
+    '/models/dice.glb',
+    (gltf) => {
+      // Tudo relativo ao modelo deve ficar DENTRO deste bloco
+      diceModel = gltf.scene;
+      diceModel.name = 'meuDado';
+      scene.add(diceModel);
+    },
+    undefined,
+    (error) => {
+      console.error('Erro ao carregar o modelo:', error);
+    }
+  );
+
+  function animate() { 
+    animationFrameId = requestAnimationFrame(animate);
+
+    // Anima o dado se ele já tiver sido carregado
+   
+
+    // O render DEVE ficar dentro da função animate
+    renderer.render(scene, camera);
+  }
+
+  animate();
+});
 </script>
 
 <template>
-  <main class="min-h-screen bg-kairos-black text-kairos-white">
-    <div class="kairos-container flex min-h-screen flex-col py-8">
-      <header class="flex items-center justify-between">
-        <KairosMark />
+  <header>
+    <div class="kairos-container grid grid-cols-3 items-start pt-8 flex justify-content-center">
+      </div>
+      <KairosMark/>    
+  </header>
 
-        <a
-          class="font-mono text-xs tracking-wider text-kairos-muted transition-colors hover:text-kairos-white"
-          href="/original"
-        >
-          Ver landing original
-        </a>
-      </header>
-
-      <section class="flex flex-1 items-center justify-center py-20 text-center">
-        <div class="max-w-2xl">
-          <p class="mb-5 font-mono text-xs tracking-[.18em] text-kairos-muted">
-            NOVA LANDING / ÁREA DE TESTES
-          </p>
-          <h1 class="text-[clamp(2.8rem,8vw,6.5rem)] leading-[.95] font-medium tracking-[-.055em]">
-            Sua nova ideia começa aqui.
-          </h1>
-          <p class="mx-auto mt-7 max-w-lg text-base leading-relaxed text-kairos-muted">
-            Esta página pode ser alterada livremente. A versão anterior continua preservada.
-          </p>
-        </div>
-      </section>
+  <body>
+     <div class="kairos-container items-start flex justify-content-center">
+    
+    <KairosMark/>
     </div>
-  </main>
+  </body>
 </template>

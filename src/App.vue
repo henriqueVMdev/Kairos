@@ -150,7 +150,8 @@ onBeforeUnmount(() => {
 <template>
   <div ref="app" class="app-shell relative min-h-screen overflow-clip bg-kairos-black">
     <a
-      class="fixed top-3 left-3 z-[1000] -translate-y-[160%] bg-kairos-white px-4 py-3 font-mono text-xs text-kairos-black transition-transform duration-200 focus:translate-y-0"
+      class="fixed top-3 left-3 z-[1000] -translate-y-[160%] bg-kairos-white px-4 py-3 
+      font-mono text-xs text-kairos-black transition-transform duration-200 focus:translate-y-0"
       href="#conteudo"
     >Pular para o conteúdo</a>
     <div
@@ -168,7 +169,10 @@ onBeforeUnmount(() => {
         </a>
 
         <a
-          class="inline-flex min-h-[2.7rem] items-center justify-self-end gap-[.7rem] rounded-full border border-white/32 py-0 pr-[.95rem] pl-[1.1rem] text-[.7rem] tracking-[.04em] [transition:background_.3s_ease,color_.3s_ease,border-color_.3s_ease] hover:border-kairos-white hover:bg-kairos-white hover:text-kairos-black max-[900px]:hidden [&_svg]:w-4 [&_svg]:[transition:transform_.3s_var(--ease-out)] hover:[&_svg]:translate-x-[.2rem]"
+          class="inline-flex min-h-[2.7rem] items-center justify-self-end gap-[.7rem] rounded-full border border-white/32 py-0 
+          pr-[.95rem] pl-[1.1rem] text-[.7rem] tracking-[.04em] [transition:background_.3s_ease,color_.3s_ease,border-color_.3s_ease] 
+          hover:border-kairos-white hover:bg-kairos-white 
+          hover:text-kairos-black max-[900px]:hidden [&_svg]:w-4 [&_svg]:[transition:transform_.3s_var(--ease-out)] hover:[&_svg]:translate-x-[.2rem]"
           href="/login"
         >
           <span>Entrar</span>
@@ -198,14 +202,16 @@ onBeforeUnmount(() => {
       <nav
         id="mobile-menu"
         ref="mobileMenu"
-        class="fixed inset-0 z-[-1] hidden h-dvh flex-col justify-start overflow-y-auto bg-kairos-black px-(--gutter) pt-[clamp(7rem,15vh,10rem)] pb-[max(2rem,env(safe-area-inset-bottom))] [transition:opacity_.35s_ease] max-[900px]:flex [@media(max-width:900px)_and_(max-height:620px)_and_(orientation:landscape)]:pt-[5.5rem]"
+        class="fixed inset-0 z-[-1] hidden h-dvh flex-col justify-start overflow-y-auto bg-kairos-black px-(--gutter) 
+        pt-[clamp(7rem,15vh,10rem)] pb-[max(2rem,env(safe-area-inset-bottom))] [transition:opacity_.35s_ease] max-[900px]:flex [@media(max-width:900px)_and_(max-height:620px)_and_(orientation:landscape)]:pt-[5.5rem]"
         :class="menuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'"
         aria-label="Navegação móvel"
         :aria-hidden="!menuOpen"
         :inert="!menuOpen"
       >
         <a
-          class="flex items-start gap-5 border-b border-white/14 py-[.45rem] text-[clamp(2.6rem,12vw,5rem)] leading-[1.15] font-medium [@media(max-width:900px)_and_(max-height:620px)_and_(orientation:landscape)]:text-[2rem] [&_span]:pt-[.7rem] [&_span]:font-mono [&_span]:text-[.62rem] [&_span]:text-kairos-muted"
+          class="flex items-start gap-5 border-b border-white/14 py-[.45rem] text-[clamp(2.6rem,12vw,5rem)] leading-[1.15] 
+          font-medium [@media(max-width:900px)_and_(max-height:620px)_and_(orientation:landscape)]:text-[2rem] [&_span]:pt-[.7rem] [&_span]:font-mono [&_span]:text-[.62rem] [&_span]:text-kairos-muted"
           href="/login"
           @click="closeMenu()"
         ><span>01</span>Entrar</a>
