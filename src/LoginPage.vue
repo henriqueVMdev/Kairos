@@ -116,10 +116,10 @@ onBeforeUnmount(() => {
         />
         <WebThreads
           v-if="!reduceMotion"
-          class="absolute! z-[-2] h-auto! w-auto! opacity-[0.78] [inset:-8%_-35%_-4%_-45%] [transform-origin:center] [transform:rotate(-7deg)_scale(1.08)] max-[840px]:[inset:-40%_-15%_-35%]"
-          color1="#3a3a3a"
+          class="absolute! z-[-2] h-auto! w-auto! opacity-[0.9] [inset:-8%_-35%_-4%_-45%] [transform-origin:center] [transform:rotate(-7deg)_scale(1.08)] max-[840px]:[inset:-40%_-15%_-35%]"
+          color1="#ffffff"
           color2="#f4f2ed"
-          color3="#fec8c8"
+          color3="#ffffff"
           :speed="0.11"
           :thread-count="7"
           :frequency="4.2"
@@ -130,7 +130,7 @@ onBeforeUnmount(() => {
           :glow="0.015"
           :falloff="0.62"
           :thickness="1.2"
-          :brightness="0.62"
+          :brightness="0.82"
           :opacity="0.9"
           :mirror="true"
           :shimmer="false"
@@ -140,11 +140,6 @@ onBeforeUnmount(() => {
           :mouse-strength="0.12"
           aria-hidden="true"
         />
-        <span
-          class="login-signal absolute top-[52%] left-[58%] z-[-1] size-2 rounded-full bg-[var(--login-signal)] before:absolute before:inset-[-0.7rem] before:rounded-[inherit] before:border before:border-[rgba(254,200,200,0.4)] before:content-[''] max-[840px]:top-[56%] max-[840px]:left-[62%]"
-          aria-hidden="true"
-        />
-
         <a
           class="group relative z-2 inline-flex min-h-11 self-start items-center gap-[0.65rem] text-[0.75rem] font-semibold text-[rgba(244,242,237,0.68)] transition-colors duration-250 ease-[ease] hover:text-[var(--white)]"
           href="/"
@@ -371,15 +366,6 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-.login-signal {
-  animation: login-signal-pulse 2.4s var(--ease-smooth) infinite;
-}
-
-@keyframes login-signal-pulse {
-  0%, 100% { opacity: 0.65; transform: scale(0.86); }
-  50% { opacity: 1; transform: scale(1.25); }
-}
-
 .login-spinner {
   animation: login-spin 0.7s linear infinite;
 }
@@ -387,11 +373,8 @@ onBeforeUnmount(() => {
 @keyframes login-spin { to { transform: rotate(360deg); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .login-signal,
   .login-spinner {
     animation: none;
   }
-
-  .login-signal { opacity: 0.9; transform: none; }
 }
 </style>
