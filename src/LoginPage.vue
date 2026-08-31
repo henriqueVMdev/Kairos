@@ -93,7 +93,7 @@ onBeforeUnmount(() => {
 
 <template>
   <main
-    class="grid min-h-dvh place-items-center overflow-x-hidden bg-[#19191d] p-[clamp(1rem,3vw,3rem)] text-[var(--white)] [--login-signal:#fec8c8] [&_:is(a,button,input):focus-visible]:outline-[2px] [&_:is(a,button,input):focus-visible]:outline-offset-[3px] [&_:is(a,button,input):focus-visible]:outline-[var(--white)] max-[840px]:p-4 max-[560px]:block max-[560px]:p-0 [@media(max-height:760px)_and_(min-width:841px)]:py-4"
+    class="login-main grid min-h-dvh place-items-center overflow-x-hidden bg-[#19191d] p-[clamp(1rem,3vw,3rem)] text-[var(--white)] [--login-signal:#fec8c8] [&_:is(a,button,input):focus-visible]:outline-[2px] [&_:is(a,button,input):focus-visible]:outline-offset-[3px] [&_:is(a,button,input):focus-visible]:outline-[var(--white)] max-[680px]:p-4 max-[560px]:block max-[560px]:p-0 [@media(max-height:820px)_and_(min-width:681px)]:py-4 [@media(max-width:680px)_and_(max-height:640px)_and_(orientation:landscape)]:block [@media(max-width:680px)_and_(max-height:640px)_and_(orientation:landscape)]:p-3"
   >
     <a
       class="fixed top-3 left-3 z-20 translate-y-[-160%] bg-[var(--white)] px-4 py-3 text-[0.75rem] text-[var(--black)] transition-transform duration-200 ease-[ease] [font-family:var(--font-mono)] focus:translate-y-0"
@@ -103,11 +103,11 @@ onBeforeUnmount(() => {
     </a>
 
     <section
-      class="grid min-h-[min(55rem,calc(100dvh-clamp(2rem,6vw,6rem)))] w-[min(75rem,100%)] grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] overflow-hidden rounded-[1rem] border border-[rgba(255,255,255,0.16)] bg-[var(--black-soft)] shadow-[0_2.4rem_7rem_rgba(0,0,0,0.42)] max-[840px]:min-h-[calc(100dvh-2rem)] max-[840px]:grid-cols-1 max-[560px]:min-h-dvh max-[560px]:rounded-none max-[560px]:border-0 max-[560px]:shadow-none [@media(max-height:760px)_and_(min-width:841px)]:min-h-[calc(100dvh-2rem)]"
+      class="login-frame grid min-h-[min(55rem,calc(100dvh-clamp(2rem,6vw,6rem)))] w-[min(75rem,100%)] grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] overflow-hidden rounded-[1rem] border border-[rgba(255,255,255,0.16)] bg-[var(--black-soft)] shadow-[0_2.4rem_7rem_rgba(0,0,0,0.42)] max-[680px]:min-h-[calc(100dvh-2rem)] max-[680px]:grid-cols-1 max-[560px]:min-h-dvh max-[560px]:rounded-none max-[560px]:border-0 max-[560px]:shadow-none [@media(max-height:820px)_and_(min-width:681px)]:min-h-[calc(100dvh-2rem)] [@media(max-width:680px)_and_(max-height:640px)_and_(orientation:landscape)]:min-h-[calc(100dvh-1.5rem)]"
       aria-labelledby="login-title"
     >
       <aside
-        class="relative z-0 flex min-w-0 flex-col overflow-hidden border-r border-[var(--line)] bg-[#070707] p-[clamp(1.5rem,3vw,3rem)] [isolation:isolate] after:pointer-events-none after:absolute after:inset-0 after:z-[-1] after:bg-[linear-gradient(180deg,rgba(7,7,7,0.08)_0%,rgba(7,7,7,0.12)_48%,rgba(7,7,7,0.94)_100%)] after:content-[''] max-[840px]:min-h-[17rem] max-[840px]:border-r-0 max-[840px]:border-b max-[840px]:border-b-[var(--line)] max-[560px]:min-h-[14rem] max-[560px]:p-5"
+        class="login-aside relative z-0 flex min-w-0 flex-col overflow-hidden border-r border-[var(--line)] bg-[#070707] p-[clamp(1.5rem,3vw,3rem)] [isolation:isolate] after:pointer-events-none after:absolute after:inset-0 after:z-[-1] after:bg-[linear-gradient(180deg,rgba(7,7,7,0.08)_0%,rgba(7,7,7,0.12)_48%,rgba(7,7,7,0.94)_100%)] after:content-[''] max-[680px]:min-h-[16rem] max-[680px]:border-r-0 max-[680px]:border-b max-[680px]:border-b-[var(--line)] max-[560px]:min-h-[12.5rem] max-[560px]:p-[1.1rem] [@media(max-width:680px)_and_(max-height:640px)_and_(orientation:landscape)]:hidden"
         aria-label="Kairos — campo de sinais"
       >
         <div
@@ -116,7 +116,7 @@ onBeforeUnmount(() => {
         />
         <WebThreads
           v-if="!reduceMotion"
-          class="absolute! z-[-2] h-auto! w-auto! opacity-[0.9] [inset:-8%_-35%_-4%_-45%] [transform-origin:center] [transform:rotate(-7deg)_scale(1.08)] max-[840px]:[inset:-40%_-15%_-35%]"
+          class="absolute! z-[-2] h-auto! w-auto! opacity-[0.9] [inset:-8%_-35%_-4%_-45%] [transform-origin:center] [transform:rotate(-7deg)_scale(1.08)] max-[680px]:[inset:-40%_-15%_-35%]"
           color1="#ffffff"
           color2="#f4f2ed"
           color3="#ffffff"
@@ -160,18 +160,18 @@ onBeforeUnmount(() => {
         </div>
 
         <div class="relative z-2 mt-auto max-w-[25rem]">
-          <p class="m-0 text-[clamp(1.55rem,3vw,2.35rem)] leading-[1.15] font-medium tracking-[-0.035em] max-[560px]:text-[1.3rem]">
+          <p class="m-0 text-[clamp(1.55rem,3vw,2.35rem)] leading-[1.15] font-medium tracking-[-0.035em] max-[560px]:text-[1.15rem]">
             Transformamos sinais complexos<br />em direção clara.
           </p>
           <em
-            class="mt-[0.55rem] block text-[clamp(1.25rem,2.3vw,1.85rem)] font-normal text-[rgba(244,242,237,0.62)] [font-family:var(--font-display)] max-[840px]:text-[1.3rem] max-[560px]:mt-[0.3rem] max-[560px]:text-base"
+            class="mt-[0.55rem] block text-[clamp(1.25rem,2.3vw,1.85rem)] font-normal text-[rgba(244,242,237,0.62)] [font-family:var(--font-display)] max-[680px]:text-[1.3rem] max-[560px]:mt-[0.25rem] max-[560px]:text-[0.95rem]"
           >
             Decisões no tempo certo.
           </em>
         </div>
 
         <div
-          class="relative z-2 mt-12 flex justify-between border-t border-[rgba(255,255,255,0.1)] pt-4 text-[0.5rem] tracking-[0.08em] text-[rgba(244,242,237,0.42)] [font-family:var(--font-mono)] max-[840px]:hidden"
+          class="relative z-2 mt-12 flex justify-between border-t border-[rgba(255,255,255,0.1)] pt-4 text-[0.5rem] tracking-[0.08em] text-[rgba(244,242,237,0.42)] [font-family:var(--font-mono)] max-[680px]:hidden"
           aria-hidden="true"
         >
           <span>CAMPO ATIVO</span>
@@ -180,10 +180,10 @@ onBeforeUnmount(() => {
       </aside>
 
       <section
-        class="grid min-w-0 grid-rows-[auto_1fr_auto] bg-[#0f0f12] [padding:clamp(1.5rem,3vw,3rem)_clamp(1.5rem,5vw,5rem)_clamp(1.25rem,2vw,2rem)] max-[840px]:min-h-[42rem] max-[560px]:min-h-[calc(100dvh-14rem)] max-[560px]:[padding:1.5rem_1.25rem_1.25rem]"
+        class="login-panel grid min-w-0 grid-rows-[auto_1fr_auto] bg-[#0f0f12] [padding:clamp(1.5rem,3vw,3rem)_clamp(1.5rem,5vw,5rem)_clamp(1.25rem,2vw,2rem)] max-[680px]:min-h-[39rem] max-[560px]:min-h-[calc(100dvh-12.5rem)] max-[560px]:[padding:1.25rem_1.125rem_max(0.875rem,env(safe-area-inset-bottom))] [@media(max-width:680px)_and_(max-height:640px)_and_(orientation:landscape)]:min-h-0"
       >
         <a
-          class="justify-self-center text-[var(--white)] max-[560px]:justify-self-start"
+          class="login-brand justify-self-center text-[var(--white)] max-[560px]:justify-self-start"
           href="/"
           aria-label="Kairos — página inicial"
         >
@@ -191,9 +191,9 @@ onBeforeUnmount(() => {
         </a>
 
         <div
-          class="mx-auto grid w-full min-w-0 max-w-[27rem] content-center py-[clamp(3rem,7vh,6rem)] max-[840px]:py-[4.5rem] max-[560px]:py-16 [@media(max-height:760px)_and_(min-width:841px)]:py-8"
+          class="login-content mx-auto grid w-full min-w-0 max-w-[27rem] content-center py-[clamp(3rem,7vh,6rem)] max-[680px]:py-14 max-[560px]:py-6 [@media(max-height:820px)_and_(min-width:681px)]:py-8 [@media(max-width:680px)_and_(max-height:640px)_and_(orientation:landscape)]:py-6"
         >
-          <div class="mb-10 max-[560px]:mb-[2.15rem] [@media(max-height:760px)_and_(min-width:841px)]:mb-7">
+          <div class="login-intro mb-10 max-[560px]:mb-7 [@media(max-height:820px)_and_(min-width:681px)]:mb-7">
             <span
               class="inline-flex items-center gap-[0.55rem] text-[0.56rem] tracking-[0.1em] text-[var(--muted)] [font-family:var(--font-mono)]"
             >
@@ -202,13 +202,13 @@ onBeforeUnmount(() => {
             </span>
             <h1
               id="login-title"
-              class="mt-[1.15rem] mb-0 text-[clamp(2.3rem,4vw,3.6rem)] leading-none font-medium tracking-[-0.04em] [@media(max-height:760px)_and_(min-width:841px)]:text-[2.3rem]"
+              class="mt-[1.15rem] mb-0 text-[clamp(2.3rem,4vw,3.6rem)] leading-none font-medium tracking-[-0.04em] max-[560px]:mt-3 max-[560px]:text-[2rem] [@media(max-height:820px)_and_(min-width:681px)]:text-[2.3rem]"
             >
               Bem-vindo de
               <em class="font-normal text-[rgba(244,242,237,0.72)] [font-family:var(--font-display)]">volta.</em>
             </h1>
             <p
-              class="mt-4 mb-0 max-w-[38ch] text-[0.85rem] leading-[1.65] text-[#b0afaa] [@media(max-height:760px)_and_(min-width:841px)]:mt-3"
+              class="login-intro-copy mt-4 mb-0 max-w-[38ch] text-[0.85rem] leading-[1.65] text-[#b0afaa] max-[560px]:mt-3 max-[560px]:text-[0.8rem] max-[560px]:leading-[1.55] [@media(max-height:820px)_and_(min-width:681px)]:mt-3"
             >
               Acesse o Kairos para continuar sua jornada entre sinais, cenários e decisões.
             </p>
@@ -216,7 +216,7 @@ onBeforeUnmount(() => {
 
           <form
             id="formulario-login"
-            class="grid min-w-0 gap-[1.35rem] [@media(max-height:760px)_and_(min-width:841px)]:gap-4"
+            class="login-form grid min-w-0 gap-[1.35rem] max-[560px]:gap-4 [@media(max-height:820px)_and_(min-width:681px)]:gap-4"
             novalidate
             @submit.prevent="submitLogin"
           >
@@ -308,7 +308,7 @@ onBeforeUnmount(() => {
             </div>
 
             <button
-              class="mt-[0.35rem] inline-flex min-h-[3.55rem] w-full cursor-pointer items-center justify-between rounded-sm border border-[var(--white)] bg-[var(--white)] px-[1.15rem] py-0 text-[0.75rem] font-bold text-[var(--black)] transition-[background,color,border-color] duration-250 ease-[ease] enabled:hover:bg-[var(--black)] enabled:hover:text-[var(--white)] disabled:cursor-wait disabled:border-[#8c8b87] disabled:bg-[#8c8b87] disabled:text-[#2b2b2b]"
+              class="login-submit mt-[0.35rem] inline-flex min-h-[3.55rem] w-full cursor-pointer items-center justify-between rounded-sm border border-[var(--white)] bg-[var(--white)] px-[1.15rem] py-0 text-[0.75rem] font-bold text-[var(--black)] transition-[background,color,border-color] duration-250 ease-[ease] enabled:hover:bg-[var(--black)] enabled:hover:text-[var(--white)] disabled:cursor-wait disabled:border-[#8c8b87] disabled:bg-[#8c8b87] disabled:text-[#2b2b2b]"
               type="submit"
               :disabled="submitState === 'submitting'"
             >
@@ -322,7 +322,7 @@ onBeforeUnmount(() => {
             </button>
 
             <p
-              class="mt-[0.15rem] mb-0 flex flex-wrap items-center justify-center gap-1 text-center text-[0.68rem] text-[#8f8e89]"
+              class="login-signup mt-[0.15rem] mb-0 flex flex-wrap items-center justify-center gap-1 text-center text-[0.68rem] text-[#8f8e89]"
             >
               Ainda não tem acesso?
               <button
@@ -335,7 +335,7 @@ onBeforeUnmount(() => {
             </p>
 
             <p
-              class="m-0 items-start gap-[0.6rem] border-t border-[var(--line)] pt-[0.8rem] text-[0.68rem] leading-normal text-[var(--muted)]"
+              class="login-status m-0 items-start gap-[0.6rem] border-t border-[var(--line)] pt-[0.8rem] text-[0.68rem] leading-normal text-[var(--muted)]"
               :class="statusMessage ? 'flex' : 'hidden'"
               role="status"
               aria-live="polite"
@@ -371,6 +371,63 @@ onBeforeUnmount(() => {
 }
 
 @keyframes login-spin { to { transform: rotate(360deg); } }
+
+@media (min-width: 681px) and (max-width: 960px) and (max-height: 600px) and (orientation: landscape) {
+  .login-main {
+    display: block;
+    padding: 0.75rem;
+  }
+
+  .login-frame {
+    min-height: calc(100dvh - 1.5rem);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .login-aside {
+    display: none;
+  }
+
+  .login-panel {
+    min-height: 0;
+    padding: 0.75rem 1.5rem 0.25rem;
+  }
+
+  .login-brand {
+    justify-self: start;
+  }
+
+  .login-content {
+    max-width: 48rem;
+    padding-block: 0.25rem;
+  }
+
+  .login-intro {
+    margin-bottom: 1rem;
+  }
+
+  .login-intro h1 {
+    margin-top: 0.75rem;
+    font-size: 2rem;
+  }
+
+  .login-intro-copy {
+    display: none;
+  }
+
+  .login-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .login-submit,
+  .login-signup {
+    align-self: center;
+  }
+
+  .login-status {
+    grid-column: 1 / -1;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .login-spinner {
