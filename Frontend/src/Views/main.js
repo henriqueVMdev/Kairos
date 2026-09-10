@@ -1,16 +1,13 @@
 import { createApp } from 'vue'
-import './styles/main.css'
+import { createPinia } from 'pinia'
 
-const pathname = window.location.pathname.replace(/\/+$/, '') || '/'
-const loadRootComponent = pathname === '/login'
-  ? () => import('./LoginPage.vue')
-  : pathname === '/original'
-    ? () => import('./App.vue')
-    : () => import('./NewLanding.vue')
+import App from '/App.vue'
+import router from './router'
+import './style.css'
 
-async function mountRoot() {
-  const { default: RootComponent } = await loadRootComponent()
-  createApp(RootComponent).mount('#app')
-}
+const app = create(App)
 
-mountRoot()
+app.use(createPinia())
+app.use(router)
+
+app.mount('#app')
