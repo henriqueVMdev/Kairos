@@ -4,12 +4,4 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [vue(), tailwindcss()],
-  build: {
-    rollupOptions: {
-      input: {
-        main: 'index.html',
-        login: 'login/index.html',
-      },
-    },
-  },
 })
