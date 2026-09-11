@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import Home from '../Views/Home.vue'
-import LoginPage from '../views/LoginPage.vue';
+import LoginPage from '../views/LoginPage.vue'
+import Upload from '../Views/Upload.vue'
 
 const routes = [ 
     {path: '/', name: 'home', component: Home},
     {path: '/login', name: 'login', component: LoginPage},
+    {path: '/upload', name: 'upload', component: Upload},
 ]
 
 const router = createRouter({

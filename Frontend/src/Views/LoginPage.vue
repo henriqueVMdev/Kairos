@@ -95,10 +95,8 @@ onBeforeUnmount(() => {
   <main
     class="login-main grid min-h-dvh place-items-center overflow-x-hidden bg-[#19191d] p-[clamp(1rem,3vw,3rem)] text-[var(--white)] [--login-signal:#fec8c8] [&_:is(a,button,input):focus-visible]:outline-[2px] [&_:is(a,button,input):focus-visible]:outline-offset-[3px] [&_:is(a,button,input):focus-visible]:outline-[var(--white)] max-[680px]:p-4 max-[560px]:block max-[560px]:p-0 [@media(max-height:820px)_and_(min-width:681px)]:py-4 [@media(max-width:680px)_and_(max-height:640px)_and_(orientation:landscape)]:block [@media(max-width:680px)_and_(max-height:640px)_and_(orientation:landscape)]:p-3"
   >
-    <a
-      class="fixed top-3 left-3 z-20 translate-y-[-160%] bg-[var(--white)] px-4 py-3 text-[0.75rem] text-[var(--black)] transition-transform duration-200 ease-[ease] [font-family:var(--font-mono)] focus:translate-y-0"
-      href="#formulario-login"
-    >
+    <a class="fixed top-3 left-3 z-20 translate-y-[-160%] bg-[var(--white)] px-4 py-3 text-[0.75rem] text-[var(--black)] transition-transform duration-200 ease-[ease] [font-family:var(--font-mono)] focus:translate-y-0"
+      href="#formulario-login">
       Pular para o formulário
     </a>
 
@@ -112,7 +110,7 @@ onBeforeUnmount(() => {
       >
         <div
           class="absolute inset-0 z-[-3] [background-image:linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] [background-size:4rem_4rem] [mask-image:linear-gradient(to_bottom,transparent,#000_18%,#000_82%,transparent)]"
-          aria-hidden="true"
+          aria-hidden="True"
         />
         <WebThreads
           v-if="!reduceMotion"
