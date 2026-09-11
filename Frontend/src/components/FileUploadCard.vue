@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { UploadCloud, X, CheckCircle2, Trash2 } from "lucide-vue-next";
-import { cn } from "@/lib/utils"; // Assumindo o mesmo helper de merge de classes
-import { Button } from "@/components/ui/button"; // shadcn-vue
-import { Progress } from "@/components/ui/progress"; // shadcn-vue
+import { cn } from "@/lib/utils";
 
 // Estrutura de um arquivo em upload
 export interface UploadedFile {
@@ -82,30 +80,29 @@ function formatFileSize(bytes: number) {
 </script>
 
 <template>
-  <div class="w-full max-w-lg bg-background rounded-xl border shadow-sm card-enter-animation">
+  <div class="w-full max-w-lg bg-kairos-panel rounded-xl border border-white/10 shadow-sm card-enter-animation">
     <div class="p-6">
       <div class="flex items-start justify-between">
         <div class="flex items-center gap-4">
-          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-muted">
-            <UploadCloud class="w-6 h-6 text-muted-foreground" />
+          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-white/5">
+            <UploadCloud class="w-6 h-6 text-kairos-muted" />
           </div>
           <div>
-            <h3 class="text-lg font-semibold text-foreground">Upload files</h3>
-            <p class="text-sm text-muted-foreground mt-1">
+            <h3 class="text-lg font-display font-semibold text-kairos-white">Upload files</h3>
+            <p class="text-sm text-kairos-muted mt-1">
               Select and upload the files of your choice
             </p>
           </div>
         </div>
 
-        <Button
+        <button
           v-if="closable"
-          variant="ghost"
-          size="icon"
-          class="rounded-full w-8 h-8"
+          type="button"
+          class="inline-flex items-center justify-center rounded-full w-8 h-8 text-kairos-muted hover:bg-white/10 hover:text-kairos-white transition-colors"
           @click="emit('close')"
         >
           <X class="w-4 h-4" />
-        </Button>
+        </button>
       </div>
 
       <div
@@ -117,8 +114,8 @@ function formatFileSize(bytes: number) {
         :class="cn(
           'mt-6 border-2 border-dashed rounded-lg p-8 flex flex-col items-center justify-center text-center transition-colors duration-200 cursor-pointer',
           isDragging
-            ? 'border-primary bg-primary/10'
-            : 'border-muted-foreground/30 hover:border-primary/50'
+            ? 'border-kairos-white bg-white/5'
+            : 'border-white/15 hover:border-kairos-white/50'
         )"
       >
         <input
@@ -128,18 +125,21 @@ function formatFileSize(bytes: number) {
           class="hidden"
           @change="handleFileSelect"
         />
-        <UploadCloud class="w-10 h-10 text-muted-foreground mb-4" />
-        <p class="font-semibold text-foreground">Choose a file or drag & drop it here.</p>
-        <p class="text-xs text-muted-foreground mt-1">
+        <UploadCloud class="w-10 h-10 text-kairos-muted mb-4" />
+        <p class="font-semibold text-kairos-white">Choose a file or drag & drop it here.</p>
+        <p class="text-xs text-kairos-muted mt-1">
           JPEG, PNG, PDF, and MP4 formats, up to 50 MB.
         </p>
-        <Button variant="outline" size="sm" class="mt-4 pointer-events-none">
+        <button
+          type="button"
+          class="inline-flex items-center justify-center rounded-md border border-white/15 text-kairos-white px-3 py-1.5 text-sm font-medium mt-4 pointer-events-none"
+        >
           Browse File
-        </Button>
+        </button>
       </div>
     </div>
 
-    <div v-if="props.files.length > 0" class="p-6 border-t">
+    <div v-if="props.files.length > 0" class="p-6 border-t border-white/10">
       <TransitionGroup tag="ul" name="file-item" class="space-y-4 relative">
         <li
           v-for="file in props.files"
@@ -147,14 +147,14 @@ function formatFileSize(bytes: number) {
           class="flex items-center justify-between"
         >
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 flex items-center justify-center rounded-md bg-muted text-sm font-bold text-muted-foreground">
+            <div class="w-10 h-10 flex items-center justify-center rounded-md bg-white/5 text-sm font-mono font-bold text-kairos-muted">
               {{ file.file.type.split("/")[1]?.toUpperCase().substring(0, 3) || "FILE" }}
             </div>
             <div class="flex-1">
-              <p class="text-sm font-medium text-foreground truncate max-w-[150px] sm:max-w-xs">
+              <p class="text-sm font-medium text-kairos-white truncate max-w-[150px] sm:max-w-xs">
                 {{ file.file.name }}
               </p>
-              <div class="text-xs text-muted-foreground">
+              <div class="text-xs font-mono text-kairos-muted">
                 <span v-if="file.status === 'uploading'">
                   {{ formatFileSize((file.file.size * file.progress) / 100) }} of {{ formatFileSize(file.file.size) }}
                 </span>
@@ -164,32 +164,35 @@ function formatFileSize(bytes: number) {
                 <span class="mx-1">•</span>
                 <span
                   :class="{
-                    'text-primary': file.status === 'uploading',
-                    'text-green-500': file.status === 'completed',
+                    'text-kairos-white': file.status === 'uploading',
+                    'text-kairos-muted': file.status === 'completed',
                   }"
                 >
                   {{ file.status === "uploading" ? "Uploading..." : "Completed" }}
                 </span>
               </div>
-              <Progress
+              <div
                 v-if="file.status === 'uploading'"
-                :model-value="file.progress"
-                class="h-1.5 mt-1"
-              />
+                class="h-1.5 mt-1 w-full rounded-full bg-white/10 overflow-hidden"
+              >
+                <div
+                  class="h-full bg-kairos-white transition-all duration-300"
+                  :style="{ width: file.progress + '%' }"
+                ></div>
+              </div>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <CheckCircle2 v-if="file.status === 'completed'" class="w-5 h-5 text-green-500" />
-            <Button
-              variant="ghost"
-              size="icon"
-              class="rounded-full w-8 h-8"
+            <CheckCircle2 v-if="file.status === 'completed'" class="w-5 h-5 text-kairos-white" />
+            <button
+              type="button"
+              class="inline-flex items-center justify-center rounded-full w-8 h-8 text-kairos-muted hover:bg-white/10 hover:text-kairos-white transition-colors"
               @click="emit('fileRemove', file.id)"
             >
               <Trash2 v-if="file.status === 'completed'" class="w-4 h-4" />
               <X v-else class="w-4 h-4" />
-            </Button>
+            </button>
           </div>
         </li>
       </TransitionGroup>
