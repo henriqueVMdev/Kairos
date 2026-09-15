@@ -1,13 +1,13 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
-import ArrowIcon from '../components/ArrowIcon.vue'
-import GridScan from '../components/GridScan.vue'
-import KairosMark from '../components/KairosMark.vue'
-import PixelCard from '../components/PixelCard.vue'
-import ProductPrototype from '../components/ProductPrototype.vue'
-import ReactiveGrid from '../components/ReactiveGrid.vue'
-import TrueFocus from '../components/TrueFocus.vue'
-import WebThreads from '../components/WebThreads.vue'
+import ArrowIcon from '../Components/ArrowIcon.vue'
+import GridScan from '../Components/GridScan.vue'
+import KairosMark from '../Components/KairosMark.vue'
+import PixelCard from '../Components/PixelCard.vue'
+import ProductPrototype from '../Components/ProductPrototype.vue'
+import ReactiveGrid from '../Components/ReactiveGrid.vue'
+import TrueFocus from '../Components/TrueFocus.vue'
+import WebThreads from '../Components/WebThreads.vue'
 
 const app = ref(null)
 const menuToggle = ref(null)

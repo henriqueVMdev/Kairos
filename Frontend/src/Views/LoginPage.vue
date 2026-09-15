@@ -7,8 +7,8 @@ FORM: Split Signal, 1º de três estudos; composição A aprovada pelo usuário;
 -->
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
-import KairosMark from '../components/KairosMark.vue'
-import WebThreads from '../components/WebThreads.vue'
+import KairosMark from '../Components/KairosMark.vue'
+import WebThreads from '../Components/WebThreads.vue'
 
 const email = ref('')
 const password = ref('')

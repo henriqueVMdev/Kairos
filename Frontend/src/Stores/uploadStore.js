@@ -7,7 +7,8 @@ export const useUploadStore = defineStore('upload', {
     arquivo: null,
     dadosOriginais: [],
     dadosTratados: [],
-    erro: ''
+    erro: '',
+    arquivosEmUpload: [],
   }),
 
   // GETTERS: informações derivadas do state.
@@ -26,7 +27,8 @@ export const useUploadStore = defineStore('upload', {
   },
 
   // ACTIONS: leitura, tratamento e limpeza.
-  actions: {
+
+  actions: {    
     async lerArquivo(file) {
       this.erro = ''
       this.arquivo = file
@@ -58,6 +60,22 @@ export const useUploadStore = defineStore('upload', {
         console.error(error)
         this.erro = 'Não foi possível ler a planilha.'
       }
+    },
+
+    atualizarArquivo(id, patch) {
+      const item = this.arquivosEmUpload.find((a) => a.id === id)
+      Object.assign(item, patch)
+    },
+    
+    adicionarArquivo(id){
+      const id = crypto.randomUUID()
+      const novoItem = { id: id, file: file, progress:0, status:'uploading' }
+      this.arquivosEmUpload = [novoItem]
+    },
+
+    removerArquivo(id){
+      this.arquivosEmUpload = this.arquivosEmUpload.filter((a) => a.id !== id)
+     
     },
 
     tratarDados() {

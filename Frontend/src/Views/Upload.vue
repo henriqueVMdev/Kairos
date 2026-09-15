@@ -1,12 +1,13 @@
 <script setup>
-import { useUploadStore } from '../stores/uploadStore.js'
-import FileUploadCard from '../components/FileUploadCard.vue'
+import { useUploadStore } from '../Stores/uploadStore.js'
+import FileUploadCard from '../Components/FileUploadCard.vue'
 
 const store = useUploadStore()
-function escolherArquivo(event) {
-  const file = event.target.files?.[0]
+function escolherArquivo(files) {
+  const file = files[0]
   if (file) {
     store.lerArquivo(file)
+    store.adicionarArquivo(file)
   }
 }
 </script>
@@ -26,12 +27,7 @@ function escolherArquivo(event) {
       <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm lg:col-span-2">
         <label class="mb-2 block text-sm font-semibold">Escolha o arquivo</label>
 
-        <input
-          type="file"
-          accept=".xlsx,.xls,.csv"
-          @change="escolherArquivo"
-          class="block w-full rounded-lg border border-slate-300 bg-white p-3 text-sm"
-        />
+       <FileUploadCard @filesChange="escolherArquivo" />
 
         <p v-if="store.arquivo" class="mt-4 text-sm text-slate-700">
           Arquivo: <strong>{{ store.arquivo.name }}</strong>
