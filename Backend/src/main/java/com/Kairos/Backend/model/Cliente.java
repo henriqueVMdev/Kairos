@@ -1,25 +1,35 @@
 package com.Kairos.Backend.model;
-import jakarta.persistence.Entity;
+
+import jakarta.persistence.*;
 
 @Entity
+
+@Table(name = "clientes")
 public class Cliente {
-    private int codigoCTI;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column (name = "segmento", nullable = true)
     private String segmento;
+
+    @Column ( name = "nivel", nullable = true)
     private int nivel;
+    
     private double faturamento;
 
-    public Cliente(int codigoCTI, String segmento, int nivel, double faturamento){
-        setCodigoCTI(codigoCTI);
+    public Cliente(int id, String segmento, int nivel, double faturamento){
+        setId(id);
         setSegmento(segmento);
         setNivel(nivel);
         setFaturamento(faturamento);
     }
 
-    public int getCodigoCTI(){
-        return codigoCTI;
+    public int getCodId(){
+        return id;
     }
-    public void setCodigoCTI(int codigoCTI){
-        this.codigoCTI = codigoCTI;
+    public void setId(int id){
+        this.id = id;
     }
 
     public String getSegmento(){
