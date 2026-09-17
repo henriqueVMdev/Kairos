@@ -1,3 +1,4 @@
+package main.java.com.Kairos.Backend.model;
 public class Insights {
     private String tipo;
     private String descricao;

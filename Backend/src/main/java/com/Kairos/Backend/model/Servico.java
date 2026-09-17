@@ -1,3 +1,4 @@
+package main.java.com.Kairos.Backend.model;
 public class Servico {
     private int codigo;
     private String categoria;

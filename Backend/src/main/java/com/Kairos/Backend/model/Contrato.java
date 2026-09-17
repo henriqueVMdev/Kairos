@@ -1,3 +1,4 @@
+package main.java.com.Kairos.Backend.model;
 public class Contrato {
     private String nome;
     private int matricula;

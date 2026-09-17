@@ -1,3 +1,7 @@
+package com.Kairos.Backend.model;
+import jakarta.persistence.Entity;
+
+@Entity
 public class Cliente {
     private int codigoCTI;
     private String segmento;
