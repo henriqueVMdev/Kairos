@@ -80,10 +80,10 @@ function formatFileSize(bytes: number) {
 </script>
 
 <template>
-  <div class="w-full max-w-lg bg-kairos-panel rounded-xl border border-white/10 shadow-sm card-enter-animation">
-    <div class="p-6">
+  <div class="w-full min-h-120 bg-kairos-panel rounded-xl border border-white/10 shadow-sm card-enter-animation">
+    <div class="p-6 flex flex-col h-full  ">
       <div class="flex items-start justify-between">
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2">
           <div class="w-12 h-12 flex items-center justify-center rounded-full bg-white/5">
             <UploadCloud class="w-6 h-6 text-kairos-muted" />
           </div>
@@ -112,7 +112,7 @@ function formatFileSize(bytes: number) {
         @drop="handleDrop"
         @click="triggerFileSelect"
         :class="cn(
-          'mt-6 border-2 border-dashed rounded-lg p-8 flex flex-col items-center justify-center text-center transition-colors duration-200 cursor-pointer',
+          'flex-1 mt-6 border-2 border-dashed rounded-lg p-8 flex flex-col items-center justify-center text-center transition-colors duration-200 cursor-pointer',
           isDragging
             ? 'border-kairos-white bg-white/5'
             : 'border-white/15 hover:border-kairos-white/50'

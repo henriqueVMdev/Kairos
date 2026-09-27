@@ -67,10 +67,10 @@ export const useUploadStore = defineStore('upload', {
       Object.assign(item, patch)
     },
     
-    adicionarArquivo(id){
+    adicionarArquivo(file){
       const id = crypto.randomUUID()
       const novoItem = { id: id, file: file, progress:0, status:'uploading' }
-      this.arquivosEmUpload = [novoItem]
+      this.arquivosEmUpload = [...this.arquivosEmUpload, novoItem]
     },
 
     removerArquivo(id){

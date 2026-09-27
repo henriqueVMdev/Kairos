@@ -1,4 +1,4 @@
-package main.java.com.Kairos.Backend.model;
+package com.Kairos.Backend.model;
 public class Main {
     
 }
