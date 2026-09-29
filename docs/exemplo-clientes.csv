@@ -1,0 +1,8 @@
+nome,email,telefone,segmento,nivel_cliente,faturamento
+Metalúrgica Souza,contato@souza.com.br,(11) 98765-4321,Indústria,A,150000
+Mercado Bom Preço,vendas@bompreco.com,(11) 3456-7890,comercio,b,48000
+  Padaria Central ,padaria@central,(19) 99999-0000,Comércio,C,12000
+TECH SOLUÇÕES,,1234,Serviços,D,-500
+Metalúrgica Souza,contato@souza.com.br,(11) 98765-4321,Indústria,A,150000
+,sem.nome@email.com,(21) 91234-5678,Agro,A,abc
+Clínica Vida,clinica@vida.com.br,(31) 3222-1111,SERVICOS,B,98000

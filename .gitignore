@@ -7,3 +7,6 @@ dist/
 !.env.example
 .vscode/
 .idea/
+
+# explicação pessoal da atividade
+EXPLICACAO.md
