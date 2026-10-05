@@ -1,38 +1,44 @@
 package com.Kairos.Backend.model;
+import java.time.LocalDate;
+
+import jakarta.persistence.*;
 
 
+@Entity
+@Table(name = "Telemetria")
 public class Telemetria {
-    private String eventos;
-    private String status;
-    private int timestamp;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    
+    private LocalDate dataUpload = LocalDate.now();
 
-    public Telemetria(String eventos, String status, int timestamp){
-        setEventos(eventos);
-        setStatus(status);
-        setTimestamp(timestamp);
+    @Column(nullable = false)
+    private String nomeArquivo;
+
+    @Column(nullable = false)
+    private int registrosProcessados;
+
+    @ManyToOne
+    @JoinColumn(name = "Consultor_id")
+    private Consultor consultor;
+
+    private String Status;
+
+    public Telemetria(){ }
+
+    public int getId(){
+        return id;
+    }
+    public void setId(int id){
+        this.id = id;
     }
 
-    public String getEventos() {
-        return eventos;
-    }
-
-    public void setEventos(String eventos) {
-        this.eventos = eventos;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public int getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(int timestamp) {
-        this.timestamp = timestamp;
+    public String getNomeArquivo(){
+        return nomeArquivo;
+    }   
+    public void setNomeArquivo(String nomeArquivo){
+        this.nomeArquivo = nomeArquivo;
     }    
+    
 }

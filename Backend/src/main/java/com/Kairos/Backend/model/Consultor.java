@@ -1,28 +1,48 @@
 package com.Kairos.Backend.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 
 @Entity 
 @Table (name = "Consultor")
 public class Consultor {
 
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "matricula", nullable = false)
-    private int matricula;
+    @Column( nullable = false)
+    private int area;
 
     @OneToMany(mappedBy="Cliente")
     private Cliente cliente;
 
-    public Consultor(String nome, int matricula){
+    @OneToMany(mappedBy = "Telemetria")
+    private Telemetria telemetria;
+
+    public Consultor(String nome, int area){
         setNome(nome);
-        setMatricula(matricula);
+        setArea(area);
     }
 
     protected Consultor(){};
 
+    public int getId(){
+        return id;
+    }
+    public void setId(int id){
+        this.id = id;
+    }
+    
     public String getNome(){
         return nome;
     }
@@ -30,10 +50,11 @@ public class Consultor {
         this.nome = nome;
     }
 
-    public int getMatricula(){
-        return matricula;
+    public int getarea(){
+        return area;
     }
-    public void setMatricula(int matricula){
-        this.matricula = matricula;
+    public void setArea(int area){
+        this.area = area;
     }
 }
+    

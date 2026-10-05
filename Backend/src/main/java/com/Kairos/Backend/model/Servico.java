@@ -1,23 +1,40 @@
 package com.Kairos.Backend.model;
+
+import jakarta.persistence.*;
+
+
+@Entity
+@Table(name = "Servico")
 public class Servico {
-    private int codigo;
-    private String categoria;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(nullable = false)
     private String nome;
+
+    @Column(nullable = false)
+    private String categoria;
+   
+    @Column(nullable = false)
     private String descricao;
     
-    public Servico(int codigo, String categoria, String nome, String descricao){
-        setCodigo(codigo);
+    @ManyToMany(name = "Servico_id")
+    private Servico servico;
+
+    public Servico(String categoria, String nome, String descricao){
         setCategoria(categoria);
         setNome(nome);
         setDescricao(descricao);
     }
 
-    public int getCodigo(){
-        return codigo;
-    }
-    public void setCodigo(int codigo){
-        this.codigo = codigo;
-    }
+   public int getId(){
+    return id;
+   }
+   public void setId(int id){
+    this.id = id;
+   }
 
     public String getCategoria(){
         return categoria;

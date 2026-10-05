@@ -1,10 +1,9 @@
 package com.Kairos.Backend.model;
 
-import java.time.LocalDate;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -47,6 +46,9 @@ public class Cliente {
     @JoinColumn (name = "consultor_id")
     private Consultor consultor;
 
+    @OneToMany ( mappedBy = "Servico")
+    private List<Servico> servicos = new ArrayList<>();
+
     public Cliente(int id, String nome, String segmento, Character nivel, BigDecimal faturamento){
         setId(id);
         setNome(nome);
@@ -57,7 +59,7 @@ public class Cliente {
 
     protected Cliente() {}; // construtor vazio para o jpa
 
-    public int getCodId(){
+    public int getId(){
         return id;
     }
     public void setId(int id){
