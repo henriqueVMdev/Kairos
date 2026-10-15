@@ -43,7 +43,7 @@ public class Cliente {
     private List <Contrato> contratos = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn (name = "consultor_id")
+    @JoinColumn (name = "Consultor_id")
     private Consultor consultor;
 
     @OneToMany ( mappedBy = "Servico")

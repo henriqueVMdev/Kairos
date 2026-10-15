@@ -19,15 +19,19 @@ public class Servico {
    
     @Column(nullable = false)
     private String descricao;
-    
-    @ManyToMany(name = "Servico_id")
-    private Servico servico;
 
+    @ManyToOne
+    @JoinColumn (name ="Cliente_id")
+    private Cliente cliente;
+    
     public Servico(String categoria, String nome, String descricao){
         setCategoria(categoria);
         setNome(nome);
         setDescricao(descricao);
     }
+
+    protected Servico(){};
+
 
    public int getId(){
     return id;

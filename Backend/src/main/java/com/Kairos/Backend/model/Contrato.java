@@ -34,7 +34,7 @@ public class Contrato {
     private int status;
 
     @ManyToOne 
-    @JoinColumn  (name = "cliente_id")
+    @JoinColumn  (name = "Cliente_id")
     private Cliente cliente;
 
     @OneToMany (mappedBy = "Serviço_id")
