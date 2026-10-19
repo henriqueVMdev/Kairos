@@ -25,7 +25,7 @@ public class ConsultorController{   // Controller recebe as requisições HTTP
     }
 
     @GetMapping ("/{}")
-    public List<Consultor> buscarConsultor(){
-        return service.listarConsultor();
-    }
+   public List<Consultor> buscarConsultor(){
+    return service.listarConsultor();
+   }
 }
