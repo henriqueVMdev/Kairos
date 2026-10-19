@@ -1,12 +1,12 @@
 package com.Kairos.Backend.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.Kairos.Backend.model.Cliente;
 import com.Kairos.Backend.repository.ClienteRepository;
-
-import java.util.Optional;
-import java.util.List;
 
 
 @Service  // service são onde ficam as regras do negocio 
