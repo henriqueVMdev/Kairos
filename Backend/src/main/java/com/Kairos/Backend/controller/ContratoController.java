@@ -4,8 +4,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.Kairos.Backend.service.ContratoService;
+
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -30,5 +35,10 @@ public class ContratoController {
     @GetMapping("/{}")
     public List<Contrato> buscaContrato(){
         return service.buscarContrato();
+    }
+    @PostMapping("/{id}")
+    public ResponseEntity<Contrato> criarContrato(@RequestBody Contrato contrato){
+        Contrato novoContrato = service.salvarContrato(contrato);
+        return ResponseEntity.status(201).body(novoContrato);    
     }
 }

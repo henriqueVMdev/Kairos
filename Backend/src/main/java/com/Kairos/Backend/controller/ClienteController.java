@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.http.ResponseEntity;
 import com.Kairos.Backend.model.Cliente;
 import com.Kairos.Backend.service.ClienteService;
 
@@ -28,5 +30,12 @@ public class ClienteController {
     public List<Cliente> buscarClientes(){
         return service.listarCliente();
     }
-    @PutMapping("/{id}")
+    @PostMapping("/{id}")
+    public ResponseEntity<Cliente> criarCliente(@RequestBody Cliente cliente){
+        Cliente novoCliente = service.salvarCliente(cliente);
+        return ResponseEntity.status(201).body(novoCliente);
+    }
+            
+        
+    
 }
