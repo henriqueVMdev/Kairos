@@ -22,5 +22,9 @@ public class TelemetriaService {
     public List<Telemetria> buscaTelemetria(){
         return repository.findAll();
     }
+
+    public Telemetria saveTelemetria(Telemetria telemetria){
+        return repository.save(telemetria);
+    }
 }
 

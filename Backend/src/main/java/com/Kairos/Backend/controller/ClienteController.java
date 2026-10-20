@@ -28,4 +28,5 @@ public class ClienteController {
     public List<Cliente> buscarClientes(){
         return service.listarCliente();
     }
+    @PutMapping("/{id}")
 }

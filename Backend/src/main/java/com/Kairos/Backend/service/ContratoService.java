@@ -25,6 +25,10 @@ public class ContratoService {
         return repository.findAll();
     }
 
+    public Contrato salvarContrato(Contrato contrato){
+        return repository.save(contrato);
+    }
+
    
 
 }

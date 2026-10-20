@@ -28,4 +28,9 @@ public class ClienteService {
         return clienteId;
     }
 
+    public Cliente salvarCliente(Cliente cliente){
+        return repository.save(cliente);
+    }
+
+
 }

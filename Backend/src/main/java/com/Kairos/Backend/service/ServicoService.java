@@ -20,4 +20,8 @@ public class ServicoService {
     public List<Servico> buscaServico(){
         return repository.findAll();
     }
+
+    public Servico saveService(Servico servico){
+        return repository.save(servico);
+    }
 }

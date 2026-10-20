@@ -24,4 +24,7 @@ public class ConsultorService { // service ficam as regras de negocio e comunica
     public List<Consultor> listarConsultor(){
         return repository.findAll();
     }
-}
+
+    public Consultor salvarConsultor(Consultor consultor){
+        return repository.save(consultor);
+    }

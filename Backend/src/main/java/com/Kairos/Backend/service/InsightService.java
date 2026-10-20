@@ -21,4 +21,9 @@ public class InsightService {
     public List<Insights> buscaInsights(){
         return repository.findAll();
     }
+
+    public Insights saveInsight(Insights insight){
+        return repository.save(insight);
+    }
+
 }
