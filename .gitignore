@@ -1,13 +1,1 @@
-node_modules/
-dist/
-.DS_Store
-*.log
-.env
-.env.*
-!.env.example
-.vscode/
-.idea/
-treino.js
-
-# explicação pessoal da atividade
-EXPLICACAO.md
+node_modules
