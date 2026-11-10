@@ -20,6 +20,10 @@ import jakarta.persistence.Table;
 @Table(name = "clientes")
 public class Cliente {
 
+    public static Object withDefaultPasswordEncoder() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
