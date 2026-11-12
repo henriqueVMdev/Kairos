@@ -27,7 +27,7 @@ public class Usuario {
     private String email;
 
     @Column ( nullable = false)
-    private String senha;
+    private String senhaHash;
 
     public int getId(){
         return id;
@@ -50,11 +50,11 @@ public class Usuario {
     public void setEmail(String email){
         this.email = email;
     }
-    public String getSenha(){
-        return senha;
+    public String getSenhaHash(){
+        return senhaHash;
     }
-    public void setSenha(String senha){
-        this.senha = senha;
+    public void setSenhaHash(String senhaHash){
+        this.senhaHash = senhaHash;
     }
 }
 

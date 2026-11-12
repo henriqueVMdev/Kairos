@@ -1,8 +1,6 @@
 package com.Kairos.Backend.service;
 
 
-import java.util.Optional;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,21 +18,25 @@ public class UsuarioService {
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
     }
-
-    public Usuario buscaEmailUsuario(String email){
-        Optional<Usuario> buscaEmail = repository.findByEmail(email);
-        Usuario emailUsuario = buscaEmail.orElseThrow();
-        return emailUsuario;
-    }
+    
     public Usuario cadastrarUsuario(String email, String senha, Role role){
         if (repository.findByEmail(email).isPresent()) {
             throw new IllegalArgumentException("Email já cadastrado");
         }
         Usuario usuario = new Usuario();
         usuario.setEmail(email);
-        usuario.setSenha(passwordEncoder.encode(senha));
+        usuario.setSenhaHash(passwordEncoder.encode(senha));
         usuario.setRole(role);
         return repository.save(usuario);
     }
-  
+
+    public Usuario loginUsuario(String email, String senha){
+        Usuario usuario = repository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException("Email ou senha incorretos, tente novamente"));
+    if (!passwordEncoder.matches(senha, usuario.getSenhaHash())){
+        throw new IllegalArgumentException("Email ou senha incorretos, tente novamente");
+    }
+    return usuario;
+
+    }
 }
+
